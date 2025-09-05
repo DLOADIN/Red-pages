@@ -1,35 +1,137 @@
 import { Button } from "../components/ui/button"
-import { Play, Milk, Coffee, Package, Fish } from "lucide-react"
+import { Milk, Coffee, Package, Fish, ChevronLeft, ChevronRight } from "lucide-react"
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  
+  const slides = [
+    "/rico website/Foods/pexels-814191500-19362408.jpg",
+    "/rico website/Foods/pexels-jeshoots-230743.jpg", 
+    "/rico website/Foods/pexels-makafood-82669418-8952753.jpg",
+    "/rico website/Foods/pexels-pixabay-208453.jpg",
+    "/rico website/Foods/pexels-valeriya-18852576.jpg"
+  ]
+
+  // Auto-play slideshow with pause on hover
+  useEffect(() => {
+    if (isPaused) return
+    
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 6000) // Change slide every 6 seconds
+
+    return () => clearInterval(timer)
+  }, [slides.length, isPaused])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
+
   return (
     <div>
-      {/* Hero Section with Food Background */}
-      <section
-        className="relative h-[70vh] md:h-screen bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1Capture.PNG-baxKlCwiP19aa6O5HPYTCzlqMAI6lp.png')`,
-        }}
+      {/* Hero Section with Food Slideshow */}
+      <section 
+        className="relative h-[70vh] md:h-screen overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+        {/* Slideshow Background */}
+        <div className="absolute inset-0">
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url('${slide}')`,
+              }}
+            />
+          ))}
+        </div>
+        
+        {/* Overlay with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60"></div>
+        
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={24} />
+        </button>
+        
+        {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-          {/* <div className="bg-[#ad343e] rounded-full p-4 md:p-6 mb-6 md:mb-8 cursor-pointer hover:bg-red-accent transition-colors">
-            <Play className="w-6 h-6 md:w-8 md:h-8 fill-white" />
-          </div>
-          <h1 className="text-lg md:text-2xl font-medium mb-6 md:mb-8 text-[#ad343e] bg-white px-4 py-2 rounded max-w-md">
-            "Here should be a series of videos"
-          </h1> */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="bg-[#ad343e] hover:bg-red-accent text-white px-6 md:px-8 py-3 rounded-full text-sm md:text-base">Partners</Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-[#ad343e] px-6 md:px-8 py-3 rounded-full bg-transparent text-sm md:text-base"
-            >
-              Brands
-            </Button>
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/30 shadow-2xl animate-fade-in">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">
+              Welcome to Rico Distribution
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/95 max-w-3xl leading-relaxed">
+              Your trusted partner for premium food and beverage distribution worldwide. 
+              Connecting quality products with global markets.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+              <Button className="bg-[#ad343e] hover:bg-red-600 text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <Link to="/products">Explore Products</Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-[#ad343e] px-8 md:px-12 py-4 md:py-5 rounded-full bg-transparent text-base md:text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
+              >
+                <Link to="/about">Learn More</Link>
+              </Button>
+            </div>
           </div>
         </div>
+        
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? 'bg-white scale-125 shadow-lg'
+                  : 'bg-white/50 hover:bg-white/75 hover:scale-110'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+        
+        {/* Slide Counter */}
+        <div className="absolute top-6 right-6 z-20 bg-black/40 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border border-white/20">
+          {currentSlide + 1} / {slides.length}
+        </div>
+        
+        {/* Pause Indicator */}
+        {isPaused && (
+          <div className="absolute top-6 left-6 z-20 bg-black/40 backdrop-blur-md text-white px-3 py-2 rounded-full text-sm font-medium border border-white/20">
+            ⏸️ Paused
+          </div>
+        )}
       </section>
 
       {/* Browse Our Products Section */}
