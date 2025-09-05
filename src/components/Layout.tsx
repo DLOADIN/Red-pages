@@ -106,7 +106,7 @@ export default function Layout({ children }: LayoutProps) {
           <Button
             variant="outline"
             className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
-            onClick={() => window.open('mailto:roman@rico-distribution-international.co.uk', '_blank')}
+            onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=roman@rico-distribution-international.co.uk', '_blank')}
           >
             Mail
           </Button>
