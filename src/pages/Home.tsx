@@ -108,13 +108,21 @@ export default function Home() {
       {/* We Provide Well Known Products Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="relative">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3Capture.PNG-m63e9A4hOeraLx8xKI8E6eebdQSO9T.png"
+                src="/rico website/Pictures/beer 7.png"
                 alt="Premium Beer Products"
-                className="w-full rounded-lg"
+                className="w-full h-[700px] rounded-lg relative z-10"
               />
+              <div className="absolute -bottom-6 -right-6 bg-[#ad343e] p-6 rounded-lg text-white z-20 shadow-lg">
+                <h3 className="text-lg font-semibold mb-4">Feel free to contact us</h3>
+                <div className="space-y-2 text-sm">
+                  <p>📞 +44 7572 795578</p>
+                  <p>✉️ roman@rico-distribution-international.co.uk</p>
+                  <p>📍 79 Kingsley Close, Reading, RG2 8TX, United Kingdom</p>
+                </div>
+              </div>
             </div>
             <div>
               <h2 className="text-heading mb-6">We provide well known products.</h2>
@@ -128,15 +136,6 @@ export default function Home() {
                 We firmly believe that affordability and quality are words that can be used in the same sentence. That
                 is why we decided to be the bridge that connects both worlds.
               </p>
-
-              <div className="bg-red-accent p-6 rounded-lg text-white">
-                <h3 className="text-lg font-semibold mb-4">Feel free to contact us</h3>
-                <div className="space-y-2 text-sm">
-                  <p>📞 +44 7572 795578</p>
-                  <p>✉️ roman@rico-distribution-international.co.uk</p>
-                  <p>📍 79 Kingsley Close, Reading, RG2 8TX, United Kingdom</p>
-                </div>
-              </div>
 
               <Button className="bg-transparent border border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white mt-6">
                 <Link to="/about">More About Us</Link>
