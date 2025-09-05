@@ -20,18 +20,56 @@ export default function Layout({ children }: LayoutProps) {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Phone size={14} />
-              <span>+44 7572 795578</span>
+              <a 
+                href="tel:+447572795578"
+                className="hover:text-gray-300 transition-colors cursor-pointer"
+              >
+                +44 7572 795578
+              </a>
             </div>
             <div className="flex items-center gap-2">
               <Mail size={14} />
-              <span>roman@rico-distribution-international.co.uk</span>
+              <a 
+                href="mailto:roman@rico-distribution-international.co.uk"
+                className="hover:text-gray-300 transition-colors cursor-pointer"
+              >
+                roman@rico-distribution-international.co.uk
+              </a>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Twitter size={16} />
-            <Facebook size={16} />
-            <Instagram size={16} />
-            <Youtube size={16} />
+            <a 
+              href="https://twitter.com/rico_distribution" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              <Twitter size={16} />
+            </a>
+            <a 
+              href="https://facebook.com/rico.distribution" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              <Facebook size={16} />
+            </a>
+            <a 
+              href="https://www.instagram.com/drink_countre?igsh=cDRmeXZncWd2aGFx&utm_source=qr" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              <Instagram size={16} />
+            </a>
+            <a 
+              href="https://youtube.com/@rico_distribution" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-300 transition-colors cursor-pointer"
+            >
+              <Youtube size={16} />
+            </a>
           </div>
         </div>
       </div>
@@ -68,6 +106,7 @@ export default function Layout({ children }: LayoutProps) {
           <Button
             variant="outline"
             className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
+            onClick={() => window.open('mailto:roman@rico-distribution-international.co.uk', '_blank')}
           >
             Mail
           </Button>
@@ -91,10 +130,38 @@ export default function Layout({ children }: LayoutProps) {
                 <img src="/rico-distribution-logo-red-circular.png" alt="Rico Distribution" className="mb-4" />
               </div>
               <div className="flex gap-3 mb-4">
-                <Twitter size={20} />
-                <Facebook size={20} />
-                <Instagram size={20} />
-                <Youtube size={20} />
+                <a 
+                  href="https://twitter.com/rico_distribution" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                >
+                  <Twitter size={20} />
+                </a>
+                <a 
+                  href="https://facebook.com/rico.distribution" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                >
+                  <Facebook size={20} />
+                </a>
+                <a 
+                  href="https://instagram.com/rico_distribution" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a 
+                  href="https://youtube.com/@rico_distribution" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                >
+                  <Youtube size={20} />
+                </a>
               </div>
               <p className="text-small text-gray-300">
                 In the new era of distribution, we look for a future with affordability, accessibility and quality.
