@@ -77,6 +77,22 @@ export default function Layout({ children }: LayoutProps) {
       {/* Navigation */}
       <nav className="bg-white shadow-sm py-4 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
+          {/* Company Logo */}
+          <div className="flex items-center gap-4">
+            <img 
+              src="/rico website/logo/30Sep24 Simon  Free Upload  .png" 
+              alt="Rico Distribution Logo" 
+              className="h-16 w-auto"
+            />
+            <div>
+              <div className="text-xl font-bold">
+                <span className="text-[#ad343e]">RICO</span>
+                <span className="text-[#2c2f24]"> DISTRIBUTION</span>
+              </div>
+              <div className="text-sm text-gray-500 font-medium">INTERNATIONAL</div>
+            </div>
+          </div>
+          
           <div className="flex items-center gap-8">
             <Link
               to="/"
@@ -127,7 +143,7 @@ export default function Layout({ children }: LayoutProps) {
             {/* Company Info */}
             <div>
               <div className="mb-6">
-                <img src="/rico-distribution-logo-red-circular.png" alt="Rico Distribution" className="mb-4" />
+                <img src="/rico website/logo/30Sep24 Simon  Free Upload  .png" alt="Rico Distribution" className="mb-4 h-16 w-auto" />
               </div>
               <div className="flex gap-3 mb-4">
                 <a 
