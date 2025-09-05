@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Finlandica:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Droid+Sans:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Font Families */
+    --font-family: "DM Sans", sans-serif;
+    --second-family: "Finlandica", sans-serif;
+    --third-family: "Playfair Display", sans-serif;
+    --font3: "Droid Sans", sans-serif;
+    
+    /* Colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -24,6 +33,11 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+    
+    /* Custom Colors */
+    --text-primary: #2c2f24;
+    --text-secondary: #414536;
+    --red-accent: #9f0d08;
   }
 
   .dark {
@@ -55,5 +69,37 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-family);
+  }
+}
+
+@layer utilities {
+  /* Typography Classes */
+  .text-heading {
+    font-family: var(--third-family);
+    font-weight: 500;
+    font-size: 55px;
+    line-height: 110%;
+    color: var(--text-primary);
+  }
+  
+  .text-paragraph {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 156%;
+    color: var(--text-primary);
+  }
+  
+  .text-small {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--text-secondary);
+  }
+  
+  .bg-red-accent {
+    background: var(--red-accent);
   }
 }

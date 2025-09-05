@@ -45,14 +45,14 @@ export default function About() {
 
           {/* Our Debut Content */}
           <div>
-            <h1 className="text-5xl font-serif text-[#2c2f24] mb-6">Our Debut</h1>
-            <p className="text-[#474747] leading-relaxed mb-6">
+            <h1 className="text-heading mb-6">Our Debut</h1>
+            <p className="text-paragraph mb-6">
               Our journey began when our founder, an African living in the UK, recognized a gap in the flow of quality
               food products between producers and the growing markets in Africa and Europe. Driven by a vision to bridge
               this gap, he seized the opportunity to build a trusted distribution network that connects continents,
               supports businesses, and ensures access to diverse, high-quality food for all.
             </p>
-            <p className="text-[#474747] leading-relaxed">
+            <p className="text-small">
               We started with our founder country of origin, Cameroon. We bridge the gap between well-known products
               from Europe to Cameroon and vice versa. From there we expanded to other countries.
             </p>
@@ -71,7 +71,7 @@ export default function About() {
             <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-gray-100 transition-colors">
               <div className="w-0 h-0 border-l-[20px] border-l-[#ad343e] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
             </button>
-            <h2 className="text-4xl font-serif text-white">Video</h2>
+            <h2 className="text-heading text-white">Video</h2>
           </div>
         </div>
       </section>
@@ -80,8 +80,8 @@ export default function About() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-serif text-[#2c2f24] mb-6">Our impact</h2>
-            <p className="text-[#474747] leading-relaxed mb-8">
+            <h2 className="text-heading mb-6">Our impact</h2>
+            <p className="text-paragraph mb-8">
               Through our vision and values, we have created a company that has impacted hundreds of people directly and
               thousands of people indirectly.
             </p>
@@ -90,19 +90,19 @@ export default function About() {
             <div className="grid grid-cols-2 gap-6">
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
                 <div className="text-4xl font-bold text-[#2c2f24] mb-2">3</div>
-                <div className="text-[#474747]">Locations</div>
+                <div className="text-small">Locations</div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
                 <div className="text-4xl font-bold text-[#2c2f24] mb-2">100+</div>
-                <div className="text-[#474747]">Products</div>
+                <div className="text-small">Products</div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
                 <div className="text-4xl font-bold text-[#2c2f24] mb-2">65+</div>
-                <div className="text-[#474747]">Staff Members</div>
+                <div className="text-small">Staff Members</div>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm text-center">
                 <div className="text-4xl font-bold text-[#2c2f24] mb-2">100%</div>
-                <div className="text-[#474747]">Satisfied Customers</div>
+                <div className="text-small">Satisfied Customers</div>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function About() {
       {/* Partners Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-serif text-[#2c2f24] text-center mb-12">Some of our Partners</h2>
+          <h2 className="text-heading text-center mb-12">Some of our Partners</h2>
 
           {/* Partners Grid */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">

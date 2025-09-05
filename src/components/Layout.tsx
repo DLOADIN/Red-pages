@@ -96,7 +96,7 @@ export default function Layout({ children }: LayoutProps) {
                 <Instagram size={20} />
                 <Youtube size={20} />
               </div>
-              <p className="text-sm text-gray-300">
+              <p className="text-small text-gray-300">
                 In the new era of distribution, we look for a future with affordability, accessibility and quality.
               </p>
             </div>

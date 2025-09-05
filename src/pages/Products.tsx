@@ -5,8 +5,8 @@ export default function Products() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero Section */}
       <div className="text-center mb-12">
-        <h1 className="text-5xl font-serif text-[#2c2f24] mb-6">Our Product Portfolio</h1>
-        <p className="text-[#474747] max-w-2xl mx-auto leading-relaxed">
+        <h1 className="text-heading mb-6">Our Product Portfolio</h1>
+        <p className="text-paragraph max-w-2xl mx-auto">
           We select products based on their affordability, quality, accessibility and most importantly, environmental
           standard
         </p>
@@ -14,7 +14,7 @@ export default function Products() {
 
       {/* Filter Buttons */}
       <div className="flex justify-center gap-4 mb-12">
-        <Button className="bg-[#ad343e] hover:bg-[#9f0d08] text-white px-6 py-2 rounded-full">All</Button>
+        <Button className="bg-[#ad343e] hover:bg-red-accent text-white px-6 py-2 rounded-full">All</Button>
         <Button variant="ghost" className="text-[#474747] hover:bg-[#edccc9] px-6 py-2 rounded-full">
           Dairy
         </Button>
@@ -37,7 +37,7 @@ export default function Products() {
             <img src="/flavored-milk-bottles-colorful.png" alt="Countre Flavored Milk" className="max-w-full h-auto" />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Countre</h3>
-          <p className="text-[#474747] text-center">Flavored Milk</p>
+          <p className="text-small text-center">Flavored Milk</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -46,7 +46,7 @@ export default function Products() {
             <img src="/gullon-sugar-free-biscuit-box-blue.png" alt="Gullon Biscuit" className="max-w-full h-auto" />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Gullon</h3>
-          <p className="text-[#474747] text-center">Biscuit</p>
+          <p className="text-small text-center">Biscuit</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -59,7 +59,7 @@ export default function Products() {
             />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Garusana</h3>
-          <p className="text-[#474747] text-center">Cooking Oil</p>
+          <p className="text-small text-center">Cooking Oil</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -68,7 +68,7 @@ export default function Products() {
             <img src="/garusana-honey-jars-yellow-golden.png" alt="Garusana Honey" className="max-w-full h-auto" />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Garusana</h3>
-          <p className="text-[#474747] text-center">Honey</p>
+          <p className="text-small text-center">Honey</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -78,7 +78,7 @@ export default function Products() {
             <img src="/gullon-biscuit-package-orange-cookies.png" alt="Gullon Biscuit" className="max-w-full h-auto" />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Gullon</h3>
-          <p className="text-[#474747] text-center">Biscuit</p>
+          <p className="text-small text-center">Biscuit</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -87,7 +87,7 @@ export default function Products() {
             <img src="/krios-fish-canned-products-red-packaging.png" alt="Krios Fish" className="max-w-full h-auto" />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Krios</h3>
-          <p className="text-[#474747] text-center">Fish</p>
+          <p className="text-small text-center">Fish</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -100,7 +100,7 @@ export default function Products() {
             />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Gullon</h3>
-          <p className="text-[#474747] text-center">Biscuit</p>
+          <p className="text-small text-center">Biscuit</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
 
@@ -109,7 +109,7 @@ export default function Products() {
             <img src="/garusana-biscuit-tube-blue-packaging.png" alt="Garusana Biscuit" className="max-w-full h-auto" />
           </div>
           <h3 className="text-[#ad343e] font-semibold text-center">Garusana</h3>
-          <p className="text-[#474747] text-center">Biscuit</p>
+          <p className="text-small text-center">Biscuit</p>
           <p className="text-[#adb29e] text-center">—</p>
         </div>
       </div>
@@ -117,8 +117,8 @@ export default function Products() {
       {/* Our Brands Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <h2 className="text-4xl font-serif text-[#2c2f24] mb-6">Our Brands</h2>
-          <p className="text-[#474747] leading-relaxed">
+          <h2 className="text-heading mb-6">Our Brands</h2>
+          <p className="text-paragraph">
             We distribute a diverse portfolio of trusted brands, including dry goods, beverages, dairy, seafood, and
             specialty products. Each brand is chosen for its quality and reliability, ensuring we meet the needs of both
             all markets.
