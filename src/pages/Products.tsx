@@ -117,7 +117,7 @@ export default function Products() {
       {/* Our Brands Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <h2 className="text-heading mb-6">Our Brands</h2>
+          <h2 className="text-heading mb-6" id="our-brands">Our Brands</h2>
           <p className="text-paragraph">
             We distribute a diverse portfolio of trusted brands, including dry goods, beverages, dairy, seafood, and
             specialty products. Each brand is chosen for its quality and reliability, ensuring we meet the needs of both

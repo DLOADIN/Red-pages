@@ -1,5 +1,6 @@
 import { Button } from "../components/ui/button"
 import { Play, Milk, Coffee, Package, Fish } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export default function Home() {
   return (
@@ -48,7 +49,7 @@ export default function Home() {
                 variant="outline"
                 className="text-[#ad343e] border-[#ad343e] hover:bg-[#ad343e] hover:text-white bg-transparent"
               >
-                Explore List
+                <Link to="/products">Explore List</Link>
               </Button>
             </div>
 
@@ -64,7 +65,7 @@ export default function Home() {
                 variant="outline"
                 className="text-[#ad343e] border-[#ad343e] hover:bg-[#ad343e] hover:text-white bg-transparent"
               >
-                Explore List
+                <Link to="/products">Explore List</Link>
               </Button>
             </div>
 
@@ -79,8 +80,9 @@ export default function Home() {
               <Button
                 variant="outline"
                 className="text-[#ad343e] border-[#ad343e] hover:bg-[#ad343e] hover:text-white bg-transparent"
+
               >
-                Explore List
+                <Link to="/products">Explore List</Link>
               </Button>
             </div>
 
@@ -96,7 +98,7 @@ export default function Home() {
                 variant="outline"
                 className="text-[#ad343e] border-[#ad343e] hover:bg-[#ad343e] hover:text-white bg-transparent"
               >
-                Explore List
+                <Link to="/products">Explore List</Link>
               </Button>
             </div>
           </div>
@@ -137,7 +139,7 @@ export default function Home() {
               </div>
 
               <Button className="bg-transparent border border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white mt-6">
-                More About Us
+                <Link to="/about">More About Us</Link>
               </Button>
             </div>
           </div>
@@ -198,7 +200,7 @@ export default function Home() {
               variant="outline"
               className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
             >
-              More Brands
+              <Link to="/products#our-brands">More Brands</Link>
             </Button>
           </div>
         </div>
