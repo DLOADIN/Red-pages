@@ -113,7 +113,7 @@ export default function Home() {
               <img
                 src="/rico website/Pictures/beer 7.png"
                 alt="Premium Beer Products"
-                className="w-full h-[700px] rounded-lg relative z-10"
+                className="w-[500px] h-[650px] rounded-lg relative z-10"
               />
               <div className="absolute -bottom-6 -right-6 bg-[#ad343e] p-6 rounded-lg text-white z-20 shadow-lg">
                 <h3 className="text-lg font-semibold mb-4">Feel free to contact us</h3>
@@ -151,8 +151,8 @@ export default function Home() {
           <h2 className="text-heading mb-12">Our brands</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4">
-                <img src="/bigtree-logo.png" alt="Bigtree" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/bigtree-logo.png" alt="Bigtree" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Bigtree</h3>
               <p className="text-small">
@@ -162,8 +162,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4">
-                <img src="/countre-logo.png" alt="Countre" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/countre-logo.png" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Countre</h3>
               <p className="text-small">
@@ -173,8 +173,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4">
-                <img src="/dairyland-logo.png" alt="Dairyland" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/dairyland-logo.png" alt="Dairyland" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Dairyland</h3>
               <p className="text-small">
@@ -183,8 +183,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4">
-                <img src="/laitel-logo.png" alt="Laitel" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/laitel-logo.png" alt="Laitel" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Laitel</h3>
               <p className="text-small">
@@ -211,8 +211,8 @@ export default function Home() {
           <h2 className="text-heading mb-12">Our Partners</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4 border">
-                <img src="/carrefour-logo.png" alt="Carrefour Cameroun" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4 border" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/carrefour-logo.png" alt="Carrefour Cameroun" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Carrefour Cameroun</h3>
               <p className="text-small">
@@ -222,8 +222,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4 border">
-                <img src="/bao-logo.png" alt="BAO Cash and Carry" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4 border" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/bao-logo.png" alt="BAO Cash and Carry" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">BAO Cash and Carry</h3>
               <p className="text-small">
@@ -233,8 +233,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4 border">
-                <img src="/santa-lucia-logo.png" alt="Santa Lucia" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4 border" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/santa-lucia-logo.png" alt="Santa Lucia" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Santa Lucia</h3>
               <p className="text-small">
@@ -244,8 +244,8 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-6 rounded-lg shadow-sm mb-4 border">
-                <img src="/dovv-logo.png" alt="Dovv" className="w-full h-20 object-contain" />
+              <div className="bg-white p-6 shadow-sm mb-4 border" style={{borderRadius: '12px', width: '306px', height: '320px'}}>
+                <img src="/dovv-logo.png" alt="Dovv" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold text-[#2c2f24] mb-2">Dovv</h3>
               <p className="text-small">
@@ -268,14 +268,12 @@ export default function Home() {
 
       {/* World Map Section */}
       <section className="py-16 bg-[#f9f9f7]">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-white rounded-lg shadow-sm p-8">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6Capture.PNG-pGplGLH2pMvS6gsPeRcwrbhWnU7W6O.png"
-              alt="Global Distribution Map"
-              className="w-full"
-            />
-          </div>
+        <div className="w-full">
+          <img
+            src="/rico website/Pictures/world red map isolated on beige background_ Detailed world atlas.jpg"
+            alt="Global Distribution Map"
+            className="w-full"
+          />
         </div>
       </section>
     </div>

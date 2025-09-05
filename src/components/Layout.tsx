@@ -133,81 +133,84 @@ export default function Layout({ children }: LayoutProps) {
       <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-[#495460] text-white py-12 px-4 mt-16">
+      <footer className="bg-[#363636] text-white py-12 px-4 mt-16">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-semibold mb-2">Rico Distribution International</h3>
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Company Info */}
-            <div>
+            <div className="text-center">
               <div className="mb-6">
-                <img src="/rico website/logo/30Sep24 Simon  Free Upload  .png" alt="Rico Distribution" className="mb-4 h-16 w-auto" />
+                <img src="/rico website/logo/30Sep24 Simon  Free Upload  .png" alt="Rico Distribution" className="mx-auto mb-4 h-20 w-auto" />
+                <div className="text-center">
+                  <div className="text-xl font-bold">
+                    <span className="text-[#ad343e]">RICO</span>
+                    <span className="text-white"> DISTRIBUTION</span>
+                  </div>
+                  <div className="text-sm text-gray-300 font-medium">INTERNATIONAL</div>
+                </div>
               </div>
-              <div className="flex gap-3 mb-4">
+              <div className="flex justify-center gap-3 mb-4">
                 <a 
                   href="https://twitter.com/rico_distribution" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                  className="bg-[#ad343e] rounded-full p-2 hover:bg-red-600 transition-colors cursor-pointer"
                 >
-                  <Twitter size={20} />
+                  <Twitter size={20} className="text-white" />
                 </a>
                 <a 
                   href="https://facebook.com/rico.distribution" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                  className="bg-[#ad343e] rounded-full p-2 hover:bg-red-600 transition-colors cursor-pointer"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={20} className="text-white" />
                 </a>
                 <a 
                   href="https://instagram.com/rico_distribution" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                  className="bg-[#ad343e] rounded-full p-2 hover:bg-red-600 transition-colors cursor-pointer"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={20} className="text-white" />
                 </a>
                 <a 
                   href="https://youtube.com/@rico_distribution" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors cursor-pointer"
+                  className="bg-[#ad343e] rounded-full p-2 hover:bg-red-600 transition-colors cursor-pointer"
                 >
-                  <Youtube size={20} />
+                  <Youtube size={20} className="text-white" />
                 </a>
               </div>
-              <p className="text-small text-gray-300">
+              <p className="text-sm text-gray-300">
                 In the new era of distribution, we look for a future with affordability, accessibility and quality.
               </p>
             </div>
 
             {/* Pages */}
             <div>
-              <h4 className="font-semibold mb-4">Pages</h4>
+              <h4 className="font-semibold mb-4 text-gray-200">Pages</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <Link to="/" className="hover:text-gray-300">
+                  <Link to="/" className="hover:text-gray-300 text-gray-300">
                     Home
                   </Link>
                   <span className="text-gray-400">Click here</span>
                 </div>
                 <div className="flex justify-between">
-                  <Link to="/about" className="hover:text-gray-300">
+                  <Link to="/about" className="hover:text-gray-300 text-gray-300">
                     About
                   </Link>
                   <span className="text-gray-400">Click here</span>
                 </div>
                 <div className="flex justify-between">
-                  <Link to="/products" className="hover:text-gray-300">
+                  <Link to="/products" className="hover:text-gray-300 text-gray-300">
                     Products
                   </Link>
                   <span className="text-gray-400">Click here</span>
                 </div>
                 <div className="flex justify-between">
-                  <Link to="/contact" className="hover:text-gray-300">
+                  <Link to="/contact" className="hover:text-gray-300 text-gray-300">
                     Contact
                   </Link>
                   <span className="text-gray-400">Click here</span>
@@ -217,12 +220,12 @@ export default function Layout({ children }: LayoutProps) {
 
             {/* Instagram Feed */}
             <div>
-              <h4 className="font-semibold mb-4">Follow Us On Instagram</h4>
+              <h4 className="font-semibold mb-4 text-gray-200">Follow Us On Instagram</h4>
               <div className="grid grid-cols-2 gap-2">
-                <img src="/food-product-instagram-post.png" alt="Instagram post" className="rounded" />
-                <img src="/beverage-product-instagram-post.png" alt="Instagram post" className="rounded" />
-                <img src="/snack-product-instagram-post.png" alt="Instagram post" className="rounded" />
-                <img src="/grocery-store-instagram-post.png" alt="Instagram post" className="rounded" />
+                <img src="/countre-chocolate-bottle.png" alt="Chocolate Milk Drink" className="rounded" />
+                <img src="/countre-banana-bottle.png" alt="Banana Milk Drink" className="rounded" />
+                <img src="/countre-strawberry-bottle.png" alt="Strawberry Milk Drink" className="rounded" />
+                <img src="/countre-vanilla-bottle.png" alt="Vanilla Milk Drink" className="rounded" />
               </div>
             </div>
           </div>
