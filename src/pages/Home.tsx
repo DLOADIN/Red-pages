@@ -21,7 +21,7 @@ export default function Home() {
     
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 6000) // Change slide every 6 seconds
+    }, 2000) // Change slide every 2 seconds
 
     return () => clearInterval(timer)
   }, [slides.length, isPaused])
@@ -51,7 +51,7 @@ export default function Home() {
           {slides.map((slide, index) => (
             <div
               key={index}
-              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ease-in-out ${
                 index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
@@ -121,14 +121,9 @@ export default function Home() {
           ))}
         </div>
         
-        {/* Slide Counter */}
-        <div className="absolute top-6 right-6 z-20 bg-black/40 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border border-white/20">
-          {currentSlide + 1} / {slides.length}
-        </div>
-        
         {/* Pause Indicator */}
         {isPaused && (
-          <div className="absolute top-6 left-6 z-20 bg-black/40 backdrop-blur-md text-white px-3 py-2 rounded-full text-sm font-medium border border-white/20">
+          <div className="absolute top-6 right-6 z-20 bg-black/40 backdrop-blur-md text-white px-3 py-2 rounded-full text-sm font-medium border border-white/20">
             ⏸️ Paused
           </div>
         )}

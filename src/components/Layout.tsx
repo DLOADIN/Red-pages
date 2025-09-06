@@ -85,13 +85,13 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Company Logo */}
           <div className="flex items-center gap-2 md:gap-4">
-            <Link to="/">
-            <img 
-              src="/rico website/logo/30Sep24 Simon  Free Upload  .png" 
-              alt="Rico Distribution Logo" 
-              className="h-12 md:h-16 w-auto"
-            />
-            </Link>
+             <Link to="/">
+             <img 
+               src="/rico website/logo/30Sep24 Simon  Free Upload  .png" 
+               alt="Rico Distribution Logo" 
+               className="h-12 md:h-16 w-auto"
+             />
+             </Link>
             <div className="hidden sm:block">
             <Link to="/">
               <div className="text-lg md:text-xl font-bold">
@@ -211,14 +211,14 @@ export default function Layout({ children }: LayoutProps) {
             {/* Company Info */}
             <div className="text-center md:text-left">
               <div className="mb-6">
-                <img src="/rico website/logo/30Sep24 Simon  Free Upload  .png" alt="Rico Distribution" className="mx-auto md:mx-0 mb-4 h-16 md:h-20 w-auto" />
-                <div className="text-center md:text-left">
+                 <img src="rico website/logo/30Sep24_Simon__Free_Upload__-removebg-preview.png" alt="Rico Distribution" className="mx-auto md:mx-0 mb-4 h-36 md:h-36 w-auto" />
+                {/* <div className="text-center md:text-left">
                   <div className="text-lg md:text-xl font-bold">
                     <span className="text-[#ad343e]">RICO</span>
                     <span className="text-white"> DISTRIBUTION</span>
                   </div>
                   <div className="text-sm text-gray-300 font-medium">INTERNATIONAL</div>
-                </div>
+                </div> */}
               </div>
               <div className="flex justify-center md:justify-start gap-3 mb-4">
                 <a 
