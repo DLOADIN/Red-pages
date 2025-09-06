@@ -122,11 +122,11 @@ export default function Home() {
         </div>
         
         {/* Pause Indicator */}
-        {isPaused && (
+        {/* {isPaused && (
           <div className="absolute top-6 right-6 z-20 bg-black/40 backdrop-blur-md text-white px-3 py-2 rounded-full text-sm font-medium border border-white/20">
             ⏸️ Paused
           </div>
-        )}
+        )} */}
       </section>
 
       {/* Browse Our Products Section */}
@@ -248,7 +248,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/bigtree-logo.png" alt="Bigtree" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/bigtree.png" alt="Bigtree" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Bigtree</h3>
               <p className="text-sm text-gray-600">
@@ -259,7 +259,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/countre-logo.png" alt="Countre" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/Countre-logo.jpg" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Countre</h3>
               <p className="text-sm text-gray-600">
@@ -270,7 +270,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/dairyland-logo.png" alt="Dairyland" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/images.jpg" alt="Dairyland" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Dairyland</h3>
               <p className="text-sm text-gray-600">
@@ -308,7 +308,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/carrefour-logo.png" alt="Carrefour Cameroun" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/carrefour logo.png" alt="Carrefour Cameroun" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Carrefour Cameroun</h3>
               <p className="text-sm text-gray-600">
@@ -319,7 +319,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/bao-logo.png" alt="BAO Cash and Carry" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/bao.png" alt="BAO Cash and Carry" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">BAO Cash and Carry</h3>
               <p className="text-sm text-gray-600">
@@ -330,7 +330,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/santa-lucia-logo.png" alt="Santa Lucia" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/Santa.jpg" alt="Santa Lucia" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Santa Lucia</h3>
               <p className="text-sm text-gray-600">
@@ -341,7 +341,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/dovv-logo.png" alt="Dovv" className="w-full h-full object-contain" />
+                <img src="/public/rico website/logo/dovv.jpg" alt="Dovv" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Dovv</h3>
               <p className="text-sm text-gray-600">
