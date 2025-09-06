@@ -1,4 +1,43 @@
+import { useState, useEffect, useRef } from "react"
+import { Target, Eye, HandHeart } from "lucide-react"
+
 export default function About() {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  
+  const videos = [
+    "/videos/VID-20250903-WA0006.mp4",
+    "/videos/VID-20250903-WA0007.mp4", 
+    "/videos/VID-20250903-WA0008.mp4",
+    "/videos/VID-20250903-WA0009.mp4",
+    "/videos/VID-20250903-WA0010.mp4"
+  ]
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleVideoEnd = () => {
+      setTimeout(() => {
+        setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
+      }, 2000) // 2 second delay before next video
+    }
+
+    video.addEventListener('ended', handleVideoEnd)
+    
+    return () => {
+      video.removeEventListener('ended', handleVideoEnd)
+    }
+  }, [videos.length])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      video.load()
+      video.play().catch(console.error)
+    }
+  }, [currentVideoIndex])
+
   return (
     <div className="min-h-screen bg-white">
       {/* Our Debut Section */}
@@ -61,17 +100,74 @@ export default function About() {
       </section>
 
       {/* Video Section */}
-      <section
-        className="relative h-96 bg-cover bg-center"
-        style={{ backgroundImage: "url(/warehouse-background.jpg)" }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center">
-            <button className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-gray-100 transition-colors">
-              <div className="w-0 h-0 border-l-[20px] border-l-[#ad343e] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
-            </button>
-            <h2 className="text-heading text-white">Video</h2>
+      <section className="relative bg-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative aspect-video w-full">
+            <video
+              ref={videoRef}
+              className="w-full h-full object-contain bg-black"
+              muted
+              loop={false}
+              playsInline
+            >
+              <source src={videos[currentVideoIndex]} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <h2 className="text-heading text-white mb-4">Our Story</h2>
+                <p className="text-white text-lg max-w-2xl mx-auto">
+                  Watch our journey from vision to reality
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission, Vision, Values Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            {/* Our Mission */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 mt-2">
+                <Target className="w-10 h-10 mt-1 text-[#2c2f24]" />
+              </div>
+              <div>
+                <h3 className="text-[40px] mb-4">Our Mission</h3>
+                <p className="text-paragraph">
+                  We deliver diverse, high-quality food products through reliable networks, empowering businesses and creating sustainable value across continents.
+                </p>
+              </div>
+            </div>
+
+            {/* Our Vision */}  
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 mt-2">
+                <Eye className="w-10 h-10 mt-1 text-[#2c2f24]" />
+              </div>
+              <div>
+                <h3 className="text-[40px] mb-4">Our Vision</h3>
+                <p className="text-paragraph">
+                  To be a trusted global bridge in food distribution, connecting producers to Africa and Europe with quality products that nourish communities and grow economies.
+                </p>
+              </div>
+            </div>
+
+            {/* Our Values */}
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 mt-2">
+                <HandHeart className="w-10 h-10 mt-1 text-[#2c2f24]" />
+              </div>
+              <div>
+                <h3 className="text-[40px] mb-4">Our Values</h3>
+                <p className="text-paragraph">
+                  To be a leading global food distribution company, bridging continents and cultures by providing quality, diverse, and affordable food products that nourish communities and create shared prosperity.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -82,8 +178,7 @@ export default function About() {
           <div>
             <h2 className="text-heading mb-6">Our impact</h2>
             <p className="text-paragraph mb-8">
-              Through our vision and values, we have created a company that has impacted hundreds of people directly and
-              thousands of people indirectly.
+              Through our vision and values, we have created a company that has impacted Hundreds of people directly and thousands of people indirectly.
             </p>
 
             {/* Statistics Grid */}
@@ -109,7 +204,7 @@ export default function About() {
 
           {/* Royal Dutch Beer Image */}
           <div className="flex justify-center">
-            <img src="/royal-dutch-beer-bottle.png" alt="Royal Dutch Beer" className="w-80 h-auto object-contain" />
+            <img src="/royal-dutch-beer-bottle.png" alt="Royal Dutch Beer" className="w-full max-w-lg h-auto object-contain" />
           </div>
         </div>
       </section>
@@ -122,38 +217,38 @@ export default function About() {
           {/* Partners Grid */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/carrefour-logo.png" alt="Carrefour Cameroun" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/carrefour logo.png" alt="Carrefour Cameroun" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/santa-lucia-logo.png" alt="Santa Lucia" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/Santa lucia logo.jpg" alt="Santa Lucia" className="max-w-full h-16 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/dovv-logo.png" alt="DOVV" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/dovv logo.png" alt="DOVV" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/bao-logo.png" alt="BAO Cash & Carry" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/bao.png" alt="BAO Cash & Carry" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/acropole-logo.png" alt="Acropole" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/acropole.png" alt="Acropole" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/spar-logo.png" alt="SPAR" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/spar.png" alt="SPAR" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/arno-logo.png" alt="ARNO" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/arno.webp" alt="ARNO" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
               <img
-                src="/boulangerie-saker-logo.png"
+                src="/rico website/logo/logo-boulangerie-saker-1.png"
                 alt="Boulangerie Saker"
-                className="max-w-full h-16 object-contain"
+                className="max-w-full h-36 object-contain"
               />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/le-peuple-logo.png" alt="Le Peuple" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/peuple.jpg" alt="Le Peuple" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/lowe-logo.png" alt="LOWE" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/lowe.jpg" alt="LOWE" className="max-w-full h-36 object-contain" />
             </div>
           </div>
         </div>

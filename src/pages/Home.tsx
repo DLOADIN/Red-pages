@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section with Food Slideshow */}
-      <section 
+      <section
         className="relative h-[70vh] md:h-screen overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -59,7 +59,7 @@ export default function Home() {
               }}
             />
           ))}
-        </div>
+          </div>
         
         {/* Overlay with gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60"></div>
@@ -86,7 +86,7 @@ export default function Home() {
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/30 shadow-2xl animate-fade-in">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">
               Welcome to Rico Distribution
-            </h1>
+          </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/95 max-w-3xl leading-relaxed">
               Your trusted partner for premium food and beverage distribution worldwide. 
               Connecting quality products with global markets.
@@ -95,12 +95,12 @@ export default function Home() {
               <Button className="bg-[#ad343e] hover:bg-red-600 text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 <Link to="/products">Explore Products</Link>
               </Button>
-              <Button
-                variant="outline"
+            <Button
+              variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-[#ad343e] px-8 md:px-12 py-4 md:py-5 rounded-full bg-transparent text-base md:text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
-              >
+            >
                 <Link to="/about">Learn More</Link>
-              </Button>
+            </Button>
             </div>
           </div>
         </div>
@@ -365,11 +365,11 @@ export default function Home() {
       {/* World Map Section */}
       <section className="py-8 md:py-16 bg-[#f9f9f7]">
         <div className="w-full">
-          <img
+            <img
             src="/rico website/Pictures/world red map isolated on beige background_ Detailed world atlas.jpg"
-            alt="Global Distribution Map"
+              alt="Global Distribution Map"
             className="w-full h-auto"
-          />
+            />
         </div>
       </section>
     </div>
