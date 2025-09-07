@@ -1,6 +1,85 @@
-import { Button } from "../components/ui/button"
+import { useMemo, useState } from "react"
+
+type Category = "All" | "Dairy" | "Drinks" | "Dry Products" | "Frozen Products"
+
+type ProductItem = {
+  id: string
+  brand: string
+  product: string
+  image: string
+  category: Exclude<Category, "All">
+}
 
 export default function Products() {
+  const [active, setActive] = useState<Category>("All")
+
+  const items: ProductItem[] = useMemo(
+    () => [
+      // Drinks - Beers and beverages
+      { id: "beer-1", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%201.png", category: "Drinks" },
+      { id: "beer-2", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%202.png", category: "Drinks" },
+      { id: "beer-3", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%203.png", category: "Drinks" },
+      { id: "beer-4", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%204.png", category: "Drinks" },
+      { id: "beer-5", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%205.png", category: "Drinks" },
+      { id: "beer-6", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%206.png", category: "Drinks" },
+      { id: "beer-7", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%207.png", category: "Drinks" },
+      { id: "beer-8", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%208.png", category: "Drinks" },
+      { id: "beer-9", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%209.png", category: "Drinks" },
+      { id: "beer-10", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%2010.png", category: "Drinks" },
+      { id: "beer-11", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%2011.png", category: "Drinks" },
+      { id: "dutch-beer", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/dutch%20beer.png", category: "Drinks" },
+      { id: "energy", brand: "Energy Drink", product: "Energy Drinks", image: "/rico%20website/Pictures/energy%20drinks.jpg", category: "Drinks" },
+      { id: "juice", brand: "Euro Shopper", product: "Juice", image: "/rico%20website/Pictures/juice%20euro%20shopper.webp", category: "Drinks" },
+      { id: "u-db-photo", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/United%20dutch%20brewery.jpeg", category: "Drinks" },
+
+      // Dairy - Countre & Dairyland
+      { id: "countre-1", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%201.png", category: "Dairy" },
+      { id: "countre-2", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%202.png", category: "Dairy" },
+      { id: "countre-4", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%204.png", category: "Dairy" },
+      { id: "countre-5-milk", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%205%20with%20milk.png", category: "Dairy" },
+      { id: "countre-banana", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%20banana.png", category: "Dairy" },
+      { id: "countre-choco", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%20choco.png", category: "Dairy" },
+      { id: "countre-strw", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%20strw.png", category: "Dairy" },
+      { id: "countre-vanilla", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%20vanilla.png", category: "Dairy" },
+      { id: "countre-whole", brand: "Countre", product: "Whole Milk", image: "/rico%20website/Pictures/countre%20whole%20milk.png", category: "Dairy" },
+      { id: "dairyland-1", brand: "Dairyland", product: "Ice Cream", image: "/rico%20website/Pictures/daryland%20ice%20cream.png", category: "Dairy" },
+      { id: "dairyland-2", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/daryland%201.png", category: "Dairy" },
+      { id: "dairyland-3", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/dairyland%202.png", category: "Dairy" },
+      { id: "dairyland-4", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/dairyland%203.png", category: "Dairy" },
+      { id: "dairyland-5", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/dairyland%204.png", category: "Dairy" },
+
+      // Dry Products - Biscuits, Honey, Oil, Chocolate
+      { id: "gullon-1", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%201.png", category: "Dry Products" },
+      { id: "gullon-2", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%202.png", category: "Dry Products" },
+      { id: "gullon-3", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%203.png", category: "Dry Products" },
+      { id: "gullon-4", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%204.png", category: "Dry Products" },
+      { id: "gullon-5", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%205.png", category: "Dry Products" },
+      { id: "gullon-6", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%206.png", category: "Dry Products" },
+      { id: "gullon-7", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%207.png", category: "Dry Products" },
+      { id: "gullon-8", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%208.png", category: "Dry Products" },
+      { id: "gullon-9", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%209.png", category: "Dry Products" },
+      { id: "gullon-10", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%2010.png", category: "Dry Products" },
+      { id: "gullon-12", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%2012.png", category: "Dry Products" },
+      { id: "gullon-13", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%2013.png", category: "Dry Products" },
+      { id: "lady-200", brand: "Gullon", product: "Lady Finger 200g", image: "/rico%20website/Pictures/lady%20finger%20200g.png", category: "Dry Products" },
+      { id: "lady-300", brand: "Gullon", product: "Lady Finger 300g", image: "/rico%20website/Pictures/lady%20finger%20300g.png", category: "Dry Products" },
+      { id: "lady-choco", brand: "Gullon", product: "Lady Finger Choco", image: "/rico%20website/Pictures/lady%20finger%20choco%20200g.png", category: "Dry Products" },
+      { id: "lady-nosugar", brand: "Gullon", product: "Lady Finger No Sugar", image: "/rico%20website/Pictures/lady%20finger%20no%20sugar%20300g.png", category: "Dry Products" },
+      { id: "lady-fingers", brand: "Gullon", product: "Lady Fingers", image: "/rico%20website/Pictures/lady%20fingers.png", category: "Dry Products" },
+      { id: "honey", brand: "Garusana", product: "Honey", image: "/rico%20website/Pictures/honey.png", category: "Dry Products" },
+      { id: "oil", brand: "Garusana", product: "Cooking Oil", image: "/rico%20website/Pictures/oil%20.png", category: "Dry Products" },
+      { id: "dairy-choco", brand: "Dairyland", product: "Chocolate", image: "/rico%20website/Pictures/choco%20dairyland.png", category: "Dry Products" },
+
+      // Frozen - add if matching images are present
+      // Note: If you add frozen product photos later, just append here with category: "Frozen Products"
+    ],
+    []
+  )
+
+  const filtered = useMemo(() => {
+    if (active === "All") return items
+    return items.filter((i) => i.category === active)
+  }, [active, items])
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero Section */}
@@ -12,106 +91,34 @@ export default function Products() {
         </p>
       </div>
 
-      {/* Filter Buttons */}
-      <div className="flex justify-center gap-4 mb-12">
-        <Button className="bg-[#ad343e] hover:bg-red-accent text-white px-6 py-2 rounded-full">All</Button>
-        <Button variant="ghost" className="text-[#474747] hover:bg-[#edccc9] px-6 py-2 rounded-full">
-          Dairy
-        </Button>
-        <Button variant="ghost" className="text-[#474747] hover:bg-[#edccc9] px-6 py-2 rounded-full">
-          Drinks
-        </Button>
-        <Button variant="ghost" className="text-[#474747] hover:bg-[#edccc9] px-6 py-2 rounded-full">
-          Dry Products
-        </Button>
-        <Button variant="ghost" className="text-[#474747] hover:bg-[#edccc9] px-6 py-2 rounded-full">
-          Frozen Products
-        </Button>
+      {/* Filter Tabs */}
+      <div className="flex justify-center gap-3 mb-12 flex-wrap">
+        {(["All", "Dairy", "Drinks", "Dry Products", "Frozen Products"] as Category[]).map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActive(tab)}
+            className={`
+              px-5 py-2 rounded-full border transition-colors duration-150
+              ${active === tab ? "bg-[#ad343e] text-white border-[#ad343e]" : "bg-white text-[#474747] border-[#dbdfd0] hover:bg-[#f4f4f4]"}
+            `}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
 
-      {/* Product Grid */}
+      {/* Product Grid - dynamic */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        {/* Row 1 */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img src="/flavored-milk-bottles-colorful.png" alt="Countre Flavored Milk" className="max-w-full h-auto" />
+        {filtered.map((item) => (
+          <div key={item.id} className="bg-white rounded-xl p-6 shadow-sm border border-[#dbdfd0]">
+            <div className="aspect-[4/3] mb-4 flex items-center justify-center overflow-hidden">
+              <img src={item.image} alt={item.brand} className="max-h-48 object-contain" />
+            </div>
+            <h3 className="text-[#ad343e] font-semibold text-center">{item.brand}</h3>
+            <p className="text-small text-center">{item.product}</p>
+            <p className="text-[#adb29e] text-center">—</p>
           </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Countre</h3>
-          <p className="text-small text-center">Flavored Milk</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img src="/gullon-sugar-free-biscuit-box-blue.png" alt="Gullon Biscuit" className="max-w-full h-auto" />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Gullon</h3>
-          <p className="text-small text-center">Biscuit</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img
-              src="/garusana-cooking-oil-bottles-olive-oil.png"
-              alt="Garusana Cooking Oil"
-              className="max-w-full h-auto"
-            />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Garusana</h3>
-          <p className="text-small text-center">Cooking Oil</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img src="/garusana-honey-jars-yellow-golden.png" alt="Garusana Honey" className="max-w-full h-auto" />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Garusana</h3>
-          <p className="text-small text-center">Honey</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        {/* Row 2 */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img src="/gullon-biscuit-package-orange-cookies.png" alt="Gullon Biscuit" className="max-w-full h-auto" />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Gullon</h3>
-          <p className="text-small text-center">Biscuit</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img src="/krios-fish-canned-products-red-packaging.png" alt="Krios Fish" className="max-w-full h-auto" />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Krios</h3>
-          <p className="text-small text-center">Fish</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img
-              src="/gullon-sugar-free-biscuit-box-blue-cookies.png"
-              alt="Gullon Biscuit"
-              className="max-w-full h-auto"
-            />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Gullon</h3>
-          <p className="text-small text-center">Biscuit</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
-
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-[#dbdfd0]">
-          <div className="aspect-square mb-4 flex items-center justify-center">
-            <img src="/garusana-biscuit-tube-blue-packaging.png" alt="Garusana Biscuit" className="max-w-full h-auto" />
-          </div>
-          <h3 className="text-[#ad343e] font-semibold text-center">Garusana</h3>
-          <p className="text-small text-center">Biscuit</p>
-          <p className="text-[#adb29e] text-center">—</p>
-        </div>
+        ))}
       </div>
 
       {/* Our Brands Section */}
