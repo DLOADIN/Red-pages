@@ -3,6 +3,7 @@ import { Target, Eye, HandHeart } from "lucide-react"
 
 export default function About() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   
   const videos = [
@@ -12,6 +13,11 @@ export default function About() {
     "/videos/VID-20250903-WA0009.mp4",
     "/videos/VID-20250903-WA0010.mp4"
   ]
+
+  // Debug: Log current video
+  useEffect(() => {
+    console.log('Current video:', videos[currentVideoIndex])
+  }, [currentVideoIndex])
 
   useEffect(() => {
     const video = videoRef.current
@@ -32,11 +38,82 @@ export default function About() {
 
   useEffect(() => {
     const video = videoRef.current
-    if (video) {
-      video.load()
-      video.play().catch(console.error)
+    if (!video || isLoading) return
+
+    const loadAndPlay = async () => {
+      setIsLoading(true)
+      console.log('Loading video:', videos[currentVideoIndex])
+      
+      try {
+        // Set the video source
+        video.src = videos[currentVideoIndex]
+        video.load()
+        
+        // Wait for the video to be ready
+        await new Promise((resolve, reject) => {
+          const timeout = setTimeout(() => {
+            reject(new Error('Video load timeout'))
+          }, 10000) // 10 second timeout
+          
+          if (video.readyState >= 2) {
+            clearTimeout(timeout)
+            resolve(true)
+          } else {
+            const handleLoadedData = () => {
+              clearTimeout(timeout)
+              resolve(true)
+            }
+            const handleError = () => {
+              clearTimeout(timeout)
+              reject(new Error('Video failed to load'))
+            }
+            
+            video.addEventListener('loadeddata', handleLoadedData, { once: true })
+            video.addEventListener('error', handleError, { once: true })
+          }
+        })
+        
+        console.log('Video loaded successfully, attempting to play')
+        
+        // Only play if not already playing
+        if (video.paused) {
+          await video.play()
+          console.log('Video playing successfully')
+        }
+      } catch (error) {
+        console.error('Video error:', error instanceof Error ? error.message : 'Unknown error')
+        console.error('Video src:', video.src)
+        console.error('Video error details:', video.error)
+      } finally {
+        setIsLoading(false)
+      }
     }
-  }, [currentVideoIndex])
+
+    loadAndPlay()
+  }, [currentVideoIndex, isLoading])
+
+  // Ensure video plays when it becomes visible
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && video.paused && !isLoading) {
+            video.play().catch(console.error)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    observer.observe(video)
+    
+    return () => {
+      observer.disconnect()
+    }
+  }, [isLoading])
 
   return (
     <div className="min-h-screen bg-white">
@@ -107,8 +184,17 @@ export default function About() {
               ref={videoRef}
               className="w-full h-full object-contain bg-black"
               muted
+              autoPlay
               loop={false}
               playsInline
+              preload="metadata"
+              onError={(e) => {
+                console.error('Video element error:', e)
+                console.error('Video src:', videos[currentVideoIndex])
+              }}
+              onLoadStart={() => console.log('Video load started')}
+              onLoadedData={() => console.log('Video data loaded')}
+              onCanPlay={() => console.log('Video can play')}
             >
               <source src={videos[currentVideoIndex]} type="video/mp4" />
               Your browser does not support the video tag.
@@ -120,6 +206,12 @@ export default function About() {
                 <p className="text-white text-lg max-w-2xl mx-auto">
                   Watch our journey from vision to reality
                 </p>
+                {isLoading && (
+                  <div className="mt-4">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+                    <p className="text-white text-sm mt-2">Loading video...</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
