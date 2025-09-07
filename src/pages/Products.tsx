@@ -114,7 +114,10 @@ export default function Products() {
       {/* Product Grid - dynamic */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {filtered.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl p-6 shadow-sm border border-[#dbdfd0]">
+          <div
+            key={item.id}
+            className="bg-white rounded-xl p-6 shadow-sm border border-[#dbdfd0] cursor-pointer transition-transform transition-shadow duration-200 will-change-transform hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:scale-[1.02]"
+          >
             <div className="aspect-[4/3] mb-4 flex items-center justify-center overflow-hidden">
               <img src={item.image} alt={item.brand} className="max-h-48 object-contain" />
             </div>
