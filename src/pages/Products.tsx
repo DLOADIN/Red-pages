@@ -115,7 +115,7 @@ export default function Products() {
       </div>
 
       {/* Our Brands Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
         <div>
           <h2 className="text-heading mb-6" id="our-brands">Our Brands</h2>
           <p className="text-paragraph">
@@ -125,35 +125,49 @@ export default function Products() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-sm mb-1">UNITED DUTCH</div>
-            <div className="text-[#ad343e] font-bold text-sm">BREWERY</div>
+        {/* Cards styled to match the screenshots exactly */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 justify-items-center">
+          {/* UNITED DUTCH BREWERY */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
+              <div>UNITED DUTCH</div>
+              <div>BREWERY</div>
+            </div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-sm mb-1">HIGHLAND</div>
-            <div className="text-[#ad343e] font-bold text-sm">SPECIALITY</div>
+          {/* HIGHLAND SPECIALITY */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
+              <div>HIGHLAND</div>
+              <div>SPECIALITY</div>
+            </div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-lg">PATERSON'S</div>
+          {/* PATERSON'S */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">PATERSON’S</div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-lg">KRIOS</div>
+          {/* KRIOS */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">KRIOS</div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-lg">COUNTRE</div>
+          {/* COUNTRE */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">COUNTRE</div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-lg">GULLON</div>
+          {/* GULLON */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">GULLON</div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-lg">GARUSANA</div>
+          {/* GARUSANA */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">GARUSANA</div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-sm">MEGA WHALE</div>
+          {/* MEGA WHALE */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">MEGA WHALE</div>
           </div>
-          <div className="bg-[#f9f9f7] p-4 rounded-lg text-center border border-[#dbdfd0]">
-            <div className="text-[#ad343e] font-bold text-lg">DOSPANI</div>
+          {/* DOSPANI */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">DOSPANI</div>
           </div>
         </div>
       </div>
