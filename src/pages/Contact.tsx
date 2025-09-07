@@ -7,12 +7,15 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement | null>(null)
   const [isSending, setIsSending] = useState(false)
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState<string>("")
+  const toEmail = (import.meta.env.VITE_CONTACT_TO_EMAIL as string | undefined) || ""
 
   const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!formRef.current) return
     setIsSending(true)
     setStatus("idle")
+    setErrorMessage("")
 
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined
@@ -20,14 +23,19 @@ export default function Contact() {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error("Missing EmailJS environment variables")
+        throw new Error("Missing EmailJS environment variables (service, template or public key)")
+      }
+      if (!toEmail) {
+        throw new Error("Missing VITE_CONTACT_TO_EMAIL value")
       }
 
       await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey })
       formRef.current.reset()
       setStatus("success")
-    } catch (err) {
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Unknown error"
       console.error("EmailJS send error", err)
+      setErrorMessage(message)
       setStatus("error")
     } finally {
       setIsSending(false)
@@ -44,6 +52,8 @@ export default function Contact() {
       {/* Contact Form */}
       <section className="bg-white p-8 rounded-lg shadow-sm border border-[#e5e5e5] mb-16">
         <form ref={formRef} onSubmit={handleSend} className="space-y-6">
+          {/* destination for the email (matches EmailJS variable {{to_email}}) */}
+          <input type="hidden" name="to_email" value={toEmail} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-small font-medium mb-2">Name</label>
@@ -51,7 +61,7 @@ export default function Contact() {
                 type="text"
                 className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent"
                 placeholder="Enter your name"
-                name="user_name"
+                name="name"
                 required
               />
             </div>
@@ -61,7 +71,7 @@ export default function Contact() {
                 type="email"
                 className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent"
                 placeholder="Enter email address"
-                name="user_email"
+                name="email"
                 required
               />
             </div>
@@ -72,7 +82,7 @@ export default function Contact() {
               type="text"
               className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent"
               placeholder="Write a subject"
-              name="subject"
+              name="Subject"
               required
             />
           </div>
@@ -93,7 +103,7 @@ export default function Contact() {
             <p className="text-green-600 text-center">Message sent successfully. We will get back to you soon.</p>
           )}
           {status === "error" && (
-            <p className="text-red-600 text-center">Something went wrong. Please try again later.</p>
+            <p className="text-red-600 text-center">Something went wrong. {errorMessage ? errorMessage : "Please try again later."}</p>
           )}
         </form>
       </section>
