@@ -1,6 +1,38 @@
+import type React from "react"
+import { useRef, useState } from "react"
+import emailjs from "@emailjs/browser"
 import { Button } from "../components/ui/button"
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement | null>(null)
+  const [isSending, setIsSending] = useState(false)
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const handleSend = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!formRef.current) return
+    setIsSending(true)
+    setStatus("idle")
+
+    try {
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Missing EmailJS environment variables")
+      }
+
+      await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey })
+      formRef.current.reset()
+      setStatus("success")
+    } catch (err) {
+      console.error("EmailJS send error", err)
+      setStatus("error")
+    } finally {
+      setIsSending(false)
+    }
+  }
   return (
     <div className="max-w-4xl mx-auto px-4 py-16">
       {/* Header Section */}
@@ -11,7 +43,7 @@ export default function Contact() {
 
       {/* Contact Form */}
       <section className="bg-white p-8 rounded-lg shadow-sm border border-[#e5e5e5] mb-16">
-        <form className="space-y-6">
+        <form ref={formRef} onSubmit={handleSend} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-small font-medium mb-2">Name</label>
@@ -19,6 +51,8 @@ export default function Contact() {
                 type="text"
                 className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent"
                 placeholder="Enter your name"
+                name="user_name"
+                required
               />
             </div>
             <div>
@@ -27,6 +61,8 @@ export default function Contact() {
                 type="email"
                 className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent"
                 placeholder="Enter email address"
+                name="user_email"
+                required
               />
             </div>
           </div>
@@ -36,6 +72,8 @@ export default function Contact() {
               type="text"
               className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent"
               placeholder="Write a subject"
+              name="subject"
+              required
             />
           </div>
           <div>
@@ -44,11 +82,19 @@ export default function Contact() {
               rows={5}
               className="w-full p-3 border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ad343e] focus:border-transparent resize-none"
               placeholder="Write your message"
+              name="message"
+              required
             ></textarea>
           </div>
-          <Button className="w-full bg-[#ad343e] hover:bg-red-accent text-white py-3 rounded-full text-lg font-medium">
-            Send
+          <Button disabled={isSending} className="w-full bg-[#ad343e] hover:bg-red-accent text-white py-3 rounded-full text-lg font-medium disabled:opacity-60">
+            {isSending ? "Sending..." : "Send"}
           </Button>
+          {status === "success" && (
+            <p className="text-green-600 text-center">Message sent successfully. We will get back to you soon.</p>
+          )}
+          {status === "error" && (
+            <p className="text-red-600 text-center">Something went wrong. Please try again later.</p>
+          )}
         </form>
       </section>
 
