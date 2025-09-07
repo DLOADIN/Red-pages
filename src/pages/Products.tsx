@@ -30,7 +30,7 @@ export default function Products() {
       { id: "dutch-beer", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/dutch%20beer.png", category: "Drinks" },
       { id: "energy", brand: "Energy Drink", product: "Energy Drinks", image: "/rico%20website/Pictures/energy%20drinks.jpg", category: "Drinks" },
       { id: "juice", brand: "Euro Shopper", product: "Juice", image: "/rico%20website/Pictures/juice%20euro%20shopper.webp", category: "Drinks" },
-      { id: "u-db-photo", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/United%20dutch%20brewery.jpeg", category: "Drinks" },
+      // { id: "u-db-photo", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/United%20dutch%20brewery.jpeg", category: "Drinks" },
 
       // Dairy - Countre & Dairyland
       { id: "countre-1", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%201.png", category: "Dairy" },
@@ -69,9 +69,13 @@ export default function Products() {
       { id: "honey", brand: "Garusana", product: "Honey", image: "/rico%20website/Pictures/honey.png", category: "Dry Products" },
       { id: "oil", brand: "Garusana", product: "Cooking Oil", image: "/rico%20website/Pictures/oil%20.png", category: "Dry Products" },
       { id: "dairy-choco", brand: "Dairyland", product: "Chocolate", image: "/rico%20website/Pictures/choco%20dairyland.png", category: "Dry Products" },
+      { id: "dairy-chips", brand: "Dairyland", product: "Irish Potato Chips", image: "/rico%20website/Pictures/WhatsApp Image 2025-08-31 at 10.54.56 AM (2).jpeg", category: "Dry Products" },
 
-      // Frozen - add if matching images are present
-      // Note: If you add frozen product photos later, just append here with category: "Frozen Products"
+      // Frozen Products
+      { id: "frozen-fish", brand: "Frozen", product: "Fish", image: "/rico%20website/Pictures/Fish.jpeg", category: "Frozen Products" },
+      { id: "frozen-porc", brand: "Frozen", product: "Porc", image: "/rico%20website/Pictures/pork.jpeg", category: "Frozen Products" },
+      { id: "frozen-Packaged-chicken", brand: "Frozen", product: "Frozen-Packaged-chicken", image: "/rico%20website/Pictures/Other%20Chicken.jpeg", category: "Frozen Products" },
+      { id: "frozen-chickens", brand: "Frozen", product: "Chicken", image: "/rico%20website/Pictures/chicken.jpeg", category: "Frozen Products" },
     ],
     []
   )
