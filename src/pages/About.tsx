@@ -86,14 +86,14 @@ export default function About() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Product Images */}
           <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <img src="/rico website/countre-banana-bottle.png" alt="Countre Banana" className="w-full h-64 rounded-lg object-contain" />
-              <img src="/rico website/countre-chocolate-bottle.png" alt="Countre Chocolate" className="w-full h-64 rounded-lg object-contain" />
-              <img src="/rico website/countre-vanilla-bottle.png" alt="Countre Vanilla" className="w-full h-64 rounded-lg object-contain" />
+            <div className="grid grid-cols-2 gap-6">
+              <img src="/rico website/countre-banana-bottle.png" alt="Countre Banana" className="w-full h-64 rounded-xl object-contain" />
+              <img src="/rico website/countre-chocolate-bottle.png" alt="Countre Chocolate" className="w-full h-64 rounded-xl object-contain" />
+              <img src="/rico website/countre-vanilla-bottle.png" alt="Countre Vanilla" className="w-full h-64 rounded-xl object-contain" />
               <img
                 src="/rico website/countre-strawberry-bottle.png"
                 alt="Countre Strawberry"
-                className="w-full h-64 rounded-lg object-contain"
+                className="rounded-xl w-full h-64 rounded-xl object-contain"
               />
             </div>
 
