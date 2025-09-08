@@ -87,13 +87,13 @@ export default function About() {
           {/* Product Images */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
-              <img src="/countre-banana-bottle.png" alt="Countre Banana" className="w-full h-64 object-contain" />
-              <img src="/countre-chocolate-bottle.png" alt="Countre Chocolate" className="w-full h-64 object-contain" />
-              <img src="/countre-vanilla-bottle.png" alt="Countre Vanilla" className="w-full h-64 object-contain" />
+              <img src="/rico website/countre-banana-bottle.png" alt="Countre Banana" className="w-full h-64 rounded-lg object-contain" />
+              <img src="/rico website/countre-chocolate-bottle.png" alt="Countre Chocolate" className="w-full h-64 rounded-lg object-contain" />
+              <img src="/rico website/countre-vanilla-bottle.png" alt="Countre Vanilla" className="w-full h-64 rounded-lg object-contain" />
               <img
-                src="/countre-strawberry-bottle.png"
+                src="/rico website/countre-strawberry-bottle.png"
                 alt="Countre Strawberry"
-                className="w-full h-64 object-contain"
+                className="w-full h-64 rounded-lg object-contain"
               />
             </div>
 
