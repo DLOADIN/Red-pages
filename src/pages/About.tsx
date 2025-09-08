@@ -3,6 +3,7 @@ import { Target, Eye, HandHeart } from "lucide-react"
 
 export default function About() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
   const [videoErrors, setVideoErrors] = useState<Set<number>>(new Set())
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   
@@ -14,69 +15,49 @@ export default function About() {
     "/New folder/VID-20250903-WA0010.mp4"
   ]
 
-  // Initialize video refs array
+  // Initialize video refs
   useEffect(() => {
     videoRefs.current = videoRefs.current.slice(0, videos.length)
   }, [videos.length])
 
-  // Handle video end and auto-advance
+  // Handle video playback and navigation
   useEffect(() => {
     const currentVideo = videoRefs.current[currentVideoIndex]
     if (!currentVideo) return
 
     const handleVideoEnd = () => {
-      console.log('Video ended, advancing to next video')
-      setTimeout(() => {
-        setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
-      }, 2000) // 2 second delay before next video
+      setTimeout(() => setCurrentVideoIndex(prev => (prev + 1) % videos.length), 2000)
     }
 
     currentVideo.addEventListener('ended', handleVideoEnd)
     
-    return () => {
-      currentVideo.removeEventListener('ended', handleVideoEnd)
-    }
-  }, [currentVideoIndex, videos.length])
-
-  // Play current video and pause others
-  useEffect(() => {
+    // Control video playback
     videoRefs.current.forEach((video, index) => {
       if (!video) return
       
       if (index === currentVideoIndex) {
-        // Play current video
-        video.play().catch((error) => {
-          console.error(`Error playing video ${index}:`, error)
-          setVideoErrors(prev => new Set(prev).add(index))
-        })
+        isPlaying ? video.play().catch(console.error) : video.pause()
       } else {
-        // Pause other videos
         video.pause()
         video.currentTime = 0
       }
     })
-  }, [currentVideoIndex])
+
+    return () => currentVideo.removeEventListener('ended', handleVideoEnd)
+  }, [currentVideoIndex, isPlaying, videos.length])
+
+  // Navigation functions
+  const goToVideo = (index: number) => setCurrentVideoIndex(index)
+  const goToNext = () => setCurrentVideoIndex(prev => (prev + 1) % videos.length)
+  const goToPrevious = () => setCurrentVideoIndex(prev => (prev - 1 + videos.length) % videos.length)
+  const togglePlayPause = () => setIsPlaying(prev => !prev)
 
   // Handle video errors
   const handleVideoError = (index: number) => {
-    console.error(`Video ${index} failed to load`)
     setVideoErrors(prev => new Set(prev).add(index))
-    
-    // If current video fails, try next one
     if (index === currentVideoIndex) {
-      setTimeout(() => {
-        setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
-      }, 1000)
+      setTimeout(() => goToNext(), 1000)
     }
-  }
-
-  // Manual navigation functions
-  const goToNextVideo = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
-  }
-
-  const goToPreviousVideo = () => {
-    setCurrentVideoIndex((prevIndex) => (prevIndex - 1 + videos.length) % videos.length)
   }
 
   return (
@@ -141,69 +122,93 @@ export default function About() {
       </section>
 
       {/* Video Carousel Section */}
-      <section className="relative bg-black">
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="relative aspect-video w-full overflow-hidden">
-            {/* Video Carousel */}
-            <div className="relative w-full h-full">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-heading mb-4">Our Story</h2>
+            <p className="text-paragraph max-w-2xl mx-auto">
+              Watch our journey from vision to reality
+            </p>
+          </div>
+
+          {/* Video Carousel Container */}
+          <div className="relative">
+            {/* Video Cards Container */}
+            <div className="flex overflow-hidden rounded-2xl">
               {videos.map((videoSrc, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    index === currentVideoIndex ? 'opacity-100' : 'opacity-0'
+                  className={`flex-shrink-0 w-full transition-transform duration-500 ease-in-out ${
+                    index === currentVideoIndex ? 'translate-x-0' : 
+                    index < currentVideoIndex ? '-translate-x-full' : 'translate-x-full'
                   }`}
                 >
-                  <video
-                    ref={(el) => (videoRefs.current[index] = el)}
-                    className="w-full h-full object-cover"
-                    muted
-                    loop={false}
-                    playsInline
-                    preload="metadata"
-                    onError={() => handleVideoError(index)}
-                    onLoadStart={() => console.log(`Video ${index} load started`)}
-                    onLoadedData={() => console.log(`Video ${index} data loaded`)}
-                    onCanPlay={() => console.log(`Video ${index} can play`)}
-                  >
-                    <source src={videoSrc} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                  
-                  {/* Dark overlay for non-active videos */}
-                  {index !== currentVideoIndex && (
-                    <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-                  )}
-                  
-                  {/* Error fallback */}
-                  {videoErrors.has(index) && (
-                    <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <div className="text-6xl mb-4">📹</div>
-                        <p className="text-lg">Video {index + 1} unavailable</p>
-                        <p className="text-sm text-gray-400">Format not supported</p>
+                  <div className="relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg group">
+                    <video
+                      ref={(el) => (videoRefs.current[index] = el)}
+                      className="w-full h-full object-cover"
+                      muted
+                      loop={false}
+                      playsInline
+                      preload="metadata"
+                      onError={() => handleVideoError(index)}
+                    >
+                      <source src={videoSrc} type="video/mp4" />
+                    </video>
+                    
+                    {/* Play/Pause overlay for current video */}
+                    {index === currentVideoIndex && (
+                      <div 
+                        className="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer group-hover:bg-black/30 transition-all duration-300"
+                        onClick={togglePlayPause}
+                      >
+                        <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
+                          {isPlaying ? (
+                            <svg className="w-8 h-8 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                            </svg>
+                          ) : (
+                            <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                    
+                    {/* Play button for non-active videos */}
+                    {index !== currentVideoIndex && (
+                      <div 
+                        className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer"
+                        onClick={() => goToVideo(index)}
+                      >
+                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
+                          <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Error fallback */}
+                    {videoErrors.has(index) && (
+                      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                        <div className="text-center text-gray-600">
+                          <div className="text-6xl mb-4">📹</div>
+                          <p className="text-lg">Video {index + 1} unavailable</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
             
-            {/* Overlay Content */}
-            <div className="absolute inset-0 bg-black bg-opacity-20 pointer-events-none">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <h2 className="text-heading text-white mb-4">Our Story</h2>
-                  <p className="text-white text-lg max-w-2xl mx-auto">
-                    Watch our journey from vision to reality
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Navigation Arrows */}
+            {/* Navigation Controls */}
             <button
-              onClick={goToPreviousVideo}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300"
+              onClick={goToPrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10"
               aria-label="Previous video"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -212,8 +217,8 @@ export default function About() {
             </button>
             
             <button
-              onClick={goToNextVideo}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300"
+              onClick={goToNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10"
               aria-label="Next video"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,16 +226,16 @@ export default function About() {
               </svg>
             </button>
             
-            {/* Video Navigation Dots */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {/* Navigation Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
               {videos.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentVideoIndex(index)}
+                  onClick={() => goToVideo(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentVideoIndex
-                      ? 'bg-white scale-125'
-                      : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                      ? 'bg-white scale-125 shadow-lg'
+                      : 'bg-white/50 hover:bg-white/75'
                   }`}
                   aria-label={`Go to video ${index + 1}`}
                 />
@@ -238,7 +243,7 @@ export default function About() {
             </div>
             
             {/* Video Counter */}
-            <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
+            <div className="absolute top-4 right-4 bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow-lg z-10">
               {currentVideoIndex + 1} / {videos.length}
             </div>
           </div>
