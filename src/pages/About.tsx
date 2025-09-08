@@ -147,17 +147,17 @@ export default function About() {
             <div className="overflow-hidden">
               <div 
                 className="flex transition-transform duration-500 ease-in-out gap-6"
-                style={{ transform: `translateX(-${currentVideoIndex * (100 / Math.min(3, videos.length))}%)` }}
+                style={{ transform: `translateX(-${currentVideoIndex * 384}px)` }}
               >
                 {videos.map((videoSrc, index) => (
-                  <div key={index} className="flex-shrink-0 w-full max-w-sm">
+                  <div key={index} className="flex-shrink-0 w-[60vh]">
                     {/* Individual Carousel Container */}
                     <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
                       {/* Video Container */}
-                      <div className="relative aspect-video bg-gray-100 group">
+                      <div className="relative aspect-[4/3] bg-gray-100 group">
                         <video
                           ref={(el) => (videoRefs.current[index] = el)}
-                          className="w-full h-full object-cover"
+                          className="w-full h-[80vh] object-cover"
                           muted
                           loop={false}
                           playsInline
@@ -168,32 +168,53 @@ export default function About() {
                           <source src={videoSrc} type="video/mp4" />
                         </video>
                         
-                        {/* Play/Pause overlay */}
+                        {/* Large Play Button */}
                         <div 
-                          className="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer group-hover:bg-black/30 transition-all duration-300"
+                          className="absolute inset-0 flex items-center justify-center cursor-pointer group-hover:bg-black/10 transition-all duration-300"
                           onClick={() => toggleVideoPlay(index)}
                         >
-                          <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
+                          <div className="w-24 h-24 bg-white/95 rounded-full flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg">
                             {playingVideoIndex === index ? (
-                              <svg className="w-8 h-8 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-12 h-12 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
                               </svg>
                             ) : (
-                              <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <svg className="w-12 h-12 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M8 5v14l11-7z"/>
                               </svg>
                             )}
                           </div>
                         </div>
                         
+                        {/* Glass Container Text - Positioned above bottom */}
+                        <div className="absolute bottom-4 left-4 right-4">
+                          <div className="bg-white/15 backdrop-blur-lg rounded-xl p-5 border border-white/25 shadow-lg">
+                            <div className="flex items-center gap-2 mb-3">
+                              <div className="flex">
+                                {[...Array(5)].map((_, i) => (
+                                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+                                ))}
+                              </div>
+                            </div>
+                            <h3 className="text-white font-bold text-xl mb-2">
+                              Our Story - Part {index + 1}
+                            </h3>
+                            <p className="text-white/90 text-base">
+                              Watch our journey from vision to reality
+                            </p>
+                          </div>
+                        </div>
+                        
                         {/* Video number indicator */}
-                        <div className="absolute top-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-sm font-medium">
+                        <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
                           {index + 1}
                         </div>
                         
                         {/* Playing indicator */}
                         {playingVideoIndex === index && (
-                          <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-medium animate-pulse">
+                          <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse">
                             Playing
                           </div>
                         )}
@@ -207,49 +228,6 @@ export default function About() {
                             </div>
                           </div>
                         )}
-                      </div>
-                      
-                      {/* Carousel Content */}
-                      <div className="p-6">
-                        {/* Video Title */}
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                          Our Story - Part {index + 1}
-                        </h3>
-                        
-                        {/* Video Description */}
-                        <p className="text-small text-gray-600 mb-4">
-                          Watch our journey from vision to reality in this exclusive behind-the-scenes look at our company's growth and development.
-                        </p>
-                        
-                        {/* Carousel Controls */}
-                        <div className="flex items-center justify-between">
-                          {/* Play/Pause Button */}
-                          <button
-                            onClick={() => toggleVideoPlay(index)}
-                            className="flex items-center gap-2 px-4 py-2 bg-red-accent text-white rounded-lg hover:bg-red-700 transition-colors duration-300"
-                          >
-                            {playingVideoIndex === index ? (
-                              <>
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-                                </svg>
-                                Pause
-                              </>
-                            ) : (
-                              <>
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M8 5v14l11-7z"/>
-                                </svg>
-                                Play
-                              </>
-                            )}
-                          </button>
-                          
-                          {/* Video Duration/Status */}
-                          <div className="text-xs text-gray-500">
-                            {videoErrors.has(index) ? 'Unavailable' : 'Ready to play'}
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
