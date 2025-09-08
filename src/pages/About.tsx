@@ -3,7 +3,7 @@ import { Target, Eye, HandHeart } from "lucide-react"
 
 export default function About() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [playingVideoIndex, setPlayingVideoIndex] = useState<number | null>(null)
   const [videoErrors, setVideoErrors] = useState<Set<number>>(new Set())
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   
@@ -20,44 +20,53 @@ export default function About() {
     videoRefs.current = videoRefs.current.slice(0, videos.length)
   }, [videos.length])
 
-  // Handle video playback and navigation
-  useEffect(() => {
-    const currentVideo = videoRefs.current[currentVideoIndex]
-    if (!currentVideo) return
+  // Navigation functions
+  const goToNext = () => {
+    setCurrentVideoIndex(prev => (prev + 1) % videos.length)
+    setPlayingVideoIndex(null) // Stop current video when navigating
+  }
 
-    const handleVideoEnd = () => {
-      setTimeout(() => setCurrentVideoIndex(prev => (prev + 1) % videos.length), 2000)
-    }
+  const goToPrevious = () => {
+    setCurrentVideoIndex(prev => (prev - 1 + videos.length) % videos.length)
+    setPlayingVideoIndex(null) // Stop current video when navigating
+  }
 
-    currentVideo.addEventListener('ended', handleVideoEnd)
-    
-    // Control video playback
-    videoRefs.current.forEach((video, index) => {
-      if (!video) return
-      
-      if (index === currentVideoIndex) {
-        isPlaying ? video.play().catch(console.error) : video.pause()
-      } else {
-        video.pause()
-        video.currentTime = 0
+  // Handle video playback
+  const toggleVideoPlay = (index: number) => {
+    const video = videoRefs.current[index]
+    if (!video) return
+
+    // Pause all other videos
+    videoRefs.current.forEach((v, i) => {
+      if (v && i !== index) {
+        v.pause()
       }
     })
 
-    return () => currentVideo.removeEventListener('ended', handleVideoEnd)
-  }, [currentVideoIndex, isPlaying, videos.length])
-
-  // Navigation functions
-  const goToVideo = (index: number) => setCurrentVideoIndex(index)
-  const goToNext = () => setCurrentVideoIndex(prev => (prev + 1) % videos.length)
-  const goToPrevious = () => setCurrentVideoIndex(prev => (prev - 1 + videos.length) % videos.length)
-  const togglePlayPause = () => setIsPlaying(prev => !prev)
+    if (playingVideoIndex === index) {
+      // Currently playing this video, pause it
+      video.pause()
+      setPlayingVideoIndex(null)
+    } else {
+      // Play this video
+      video.play().catch((error) => {
+        console.error(`Error playing video ${index + 1}:`, error)
+        handleVideoError(index)
+      })
+      setPlayingVideoIndex(index)
+    }
+  }
 
   // Handle video errors
   const handleVideoError = (index: number) => {
+    console.error(`Video ${index + 1} failed to load`)
     setVideoErrors(prev => new Set(prev).add(index))
-    if (index === currentVideoIndex) {
-      setTimeout(() => goToNext(), 1000)
-    }
+    setPlayingVideoIndex(null)
+  }
+
+  // Handle video end
+  const handleVideoEnd = (index: number) => {
+    setPlayingVideoIndex(null)
   }
 
   return (
@@ -132,83 +141,126 @@ export default function About() {
             </p>
           </div>
 
-          {/* Video Carousel Container */}
+          {/* Horizontal Sliding Video Carousel */}
           <div className="relative">
-            {/* Video Cards Container */}
-            <div className="flex overflow-hidden rounded-2xl">
-              {videos.map((videoSrc, index) => (
-                <div
-                  key={index}
-                  className={`flex-shrink-0 w-full transition-transform duration-500 ease-in-out ${
-                    index === currentVideoIndex ? 'translate-x-0' : 
-                    index < currentVideoIndex ? '-translate-x-full' : 'translate-x-full'
-                  }`}
-                >
-                  <div className="relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-lg group">
-                    <video
-                      ref={(el) => (videoRefs.current[index] = el)}
-                      className="w-full h-full object-cover"
-                      muted
-                      loop={false}
-                      playsInline
-                      preload="metadata"
-                      onError={() => handleVideoError(index)}
-                    >
-                      <source src={videoSrc} type="video/mp4" />
-                    </video>
-                    
-                    {/* Play/Pause overlay for current video */}
-                    {index === currentVideoIndex && (
-                      <div 
-                        className="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer group-hover:bg-black/30 transition-all duration-300"
-                        onClick={togglePlayPause}
-                      >
-                        <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
-                          {isPlaying ? (
-                            <svg className="w-8 h-8 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-                            </svg>
-                          ) : (
-                            <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
-                          )}
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out gap-6"
+                style={{ transform: `translateX(-${currentVideoIndex * (100 / Math.min(3, videos.length))}%)` }}
+              >
+                {videos.map((videoSrc, index) => (
+                  <div key={index} className="flex-shrink-0 w-full max-w-sm">
+                    {/* Individual Carousel Container */}
+                    <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+                      {/* Video Container */}
+                      <div className="relative aspect-video bg-gray-100 group">
+                        <video
+                          ref={(el) => (videoRefs.current[index] = el)}
+                          className="w-full h-full object-cover"
+                          muted
+                          loop={false}
+                          playsInline
+                          preload="metadata"
+                          onError={() => handleVideoError(index)}
+                          onEnded={() => handleVideoEnd(index)}
+                        >
+                          <source src={videoSrc} type="video/mp4" />
+                        </video>
+                        
+                        {/* Play/Pause overlay */}
+                        <div 
+                          className="absolute inset-0 bg-black/20 flex items-center justify-center cursor-pointer group-hover:bg-black/30 transition-all duration-300"
+                          onClick={() => toggleVideoPlay(index)}
+                        >
+                          <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
+                            {playingVideoIndex === index ? (
+                              <svg className="w-8 h-8 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                              </svg>
+                            ) : (
+                              <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {/* Video number indicator */}
+                        <div className="absolute top-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-sm font-medium">
+                          {index + 1}
+                        </div>
+                        
+                        {/* Playing indicator */}
+                        {playingVideoIndex === index && (
+                          <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-medium animate-pulse">
+                            Playing
+                          </div>
+                        )}
+                        
+                        {/* Error fallback */}
+                        {videoErrors.has(index) && (
+                          <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
+                            <div className="text-center text-gray-600">
+                              <div className="text-4xl mb-2">⚠️</div>
+                              <p className="text-sm">Video {index + 1} unavailable</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Carousel Content */}
+                      <div className="p-6">
+                        {/* Video Title */}
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                          Our Story - Part {index + 1}
+                        </h3>
+                        
+                        {/* Video Description */}
+                        <p className="text-small text-gray-600 mb-4">
+                          Watch our journey from vision to reality in this exclusive behind-the-scenes look at our company's growth and development.
+                        </p>
+                        
+                        {/* Carousel Controls */}
+                        <div className="flex items-center justify-between">
+                          {/* Play/Pause Button */}
+                          <button
+                            onClick={() => toggleVideoPlay(index)}
+                            className="flex items-center gap-2 px-4 py-2 bg-red-accent text-white rounded-lg hover:bg-red-700 transition-colors duration-300"
+                          >
+                            {playingVideoIndex === index ? (
+                              <>
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                                </svg>
+                                Pause
+                              </>
+                            ) : (
+                              <>
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                Play
+                              </>
+                            )}
+                          </button>
+                          
+                          {/* Video Duration/Status */}
+                          <div className="text-xs text-gray-500">
+                            {videoErrors.has(index) ? 'Unavailable' : 'Ready to play'}
+                          </div>
                         </div>
                       </div>
-                    )}
-                    
-                    {/* Play button for non-active videos */}
-                    {index !== currentVideoIndex && (
-                      <div 
-                        className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer"
-                        onClick={() => goToVideo(index)}
-                      >
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-all duration-300">
-                          <svg className="w-8 h-8 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* Error fallback */}
-                    {videoErrors.has(index) && (
-                      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                        <div className="text-center text-gray-600">
-                          <div className="text-6xl mb-4">📹</div>
-                          <p className="text-lg">Video {index + 1} unavailable</p>
-                        </div>
-                      </div>
-                    )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
             
             {/* Navigation Controls */}
             <button
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-30"
               aria-label="Previous video"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -218,7 +270,7 @@ export default function About() {
             
             <button
               onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-10"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 z-30"
               aria-label="Next video"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,11 +279,11 @@ export default function About() {
             </button>
             
             {/* Navigation Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
               {videos.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => goToVideo(index)}
+                  onClick={() => setCurrentVideoIndex(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentVideoIndex
                       ? 'bg-white scale-125 shadow-lg'
@@ -243,10 +295,25 @@ export default function About() {
             </div>
             
             {/* Video Counter */}
-            <div className="absolute top-4 right-4 bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow-lg z-10">
+            <div className="absolute top-4 right-4 bg-white bg-opacity-90 text-gray-800 px-3 py-1 rounded-full text-sm font-medium shadow-lg z-30">
               {currentVideoIndex + 1} / {videos.length}
             </div>
           </div>
+          
+          {/* Error summary */}
+          {videoErrors.size > 0 && (
+            <div className="mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div className="flex items-center gap-2 text-yellow-800">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                <span className="font-medium">Video Loading Issues</span>
+              </div>
+              <p className="text-yellow-700 text-sm mt-1">
+                {videoErrors.size} of {videos.length} videos failed to load. Check the browser console for detailed error messages.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

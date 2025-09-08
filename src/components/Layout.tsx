@@ -50,7 +50,7 @@ export default function Layout({ children }: LayoutProps) {
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors cursor-pointer"
             >
-              <Twitter size={16} />
+            <Twitter size={16} />
             </a>
             <a 
               href="https://facebook.com/rico.distribution" 
@@ -58,7 +58,7 @@ export default function Layout({ children }: LayoutProps) {
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors cursor-pointer"
             >
-              <Facebook size={16} />
+            <Facebook size={16} />
             </a>
             <a 
               href="https://www.instagram.com/drink_countre?igsh=cDRmeXZncWd2aGFx&utm_source=qr" 
@@ -66,7 +66,7 @@ export default function Layout({ children }: LayoutProps) {
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors cursor-pointer"
             >
-              <Instagram size={16} />
+            <Instagram size={16} />
             </a>
             <a 
               href="https://youtube.com/@rico_distribution" 
@@ -74,7 +74,7 @@ export default function Layout({ children }: LayoutProps) {
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition-colors cursor-pointer"
             >
-              <Youtube size={16} />
+            <Youtube size={16} />
             </a>
           </div>
         </div>
@@ -133,14 +133,14 @@ export default function Layout({ children }: LayoutProps) {
 
           {/* Desktop Mail Button */}
           <div className="hidden lg:block">
-            <Button
-              variant="outline"
-              className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
+          <Button
+            variant="outline"
+            className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
               onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=roman@rico-distribution-international.co.uk', '_blank')}
-            >
-              Mail
-            </Button>
-          </div>
+          >
+            Mail
+          </Button>
+        </div>
 
           {/* Mobile Menu Button */}
           <button

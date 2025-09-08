@@ -120,10 +120,10 @@ export default function Products() {
           >
             <div className="aspect-[4/3] mb-4 flex items-center justify-center overflow-hidden">
               <img src={item.image} alt={item.brand} className="max-h-48 object-contain" />
-            </div>
+          </div>
             <h3 className="text-[#ad343e] font-semibold text-center">{item.brand}</h3>
             <p className="text-small text-center">{item.product}</p>
-            <p className="text-[#adb29e] text-center">—</p>
+          <p className="text-[#adb29e] text-center">—</p>
           </div>
         ))}
       </div>
