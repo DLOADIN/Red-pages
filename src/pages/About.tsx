@@ -3,117 +3,81 @@ import { Target, Eye, HandHeart } from "lucide-react"
 
 export default function About() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoErrors, setVideoErrors] = useState<Set<number>>(new Set())
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   
   const videos = [
-    "/videos/VID-20250903-WA0006.mp4",
-    "/videos/VID-20250903-WA0007.mp4", 
-    "/videos/VID-20250903-WA0008.mp4",
-    "/videos/VID-20250903-WA0009.mp4",
-    "/videos/VID-20250903-WA0010.mp4"
+    "/New folder/VID-20250903-WA0006.mp4",
+    "/New folder/VID-20250903-WA0007.mp4", 
+    "/New folder/VID-20250903-WA0008.mp4",
+    "/New folder/VID-20250903-WA0009.mp4",
+    "/New folder/VID-20250903-WA0010.mp4"
   ]
 
-  // Debug: Log current video
+  // Initialize video refs array
   useEffect(() => {
-    console.log('Current video:', videos[currentVideoIndex])
-  }, [currentVideoIndex])
+    videoRefs.current = videoRefs.current.slice(0, videos.length)
+  }, [videos.length])
 
+  // Handle video end and auto-advance
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const currentVideo = videoRefs.current[currentVideoIndex]
+    if (!currentVideo) return
 
     const handleVideoEnd = () => {
+      console.log('Video ended, advancing to next video')
       setTimeout(() => {
         setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
       }, 2000) // 2 second delay before next video
     }
 
-    video.addEventListener('ended', handleVideoEnd)
+    currentVideo.addEventListener('ended', handleVideoEnd)
     
     return () => {
-      video.removeEventListener('ended', handleVideoEnd)
+      currentVideo.removeEventListener('ended', handleVideoEnd)
     }
-  }, [videos.length])
+  }, [currentVideoIndex, videos.length])
 
+  // Play current video and pause others
   useEffect(() => {
-    const video = videoRef.current
-    if (!video || isLoading) return
-
-    const loadAndPlay = async () => {
-      setIsLoading(true)
-      console.log('Loading video:', videos[currentVideoIndex])
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return
       
-      try {
-        // Set the video source
-        video.src = videos[currentVideoIndex]
-        video.load()
-        
-        // Wait for the video to be ready
-        await new Promise((resolve, reject) => {
-          const timeout = setTimeout(() => {
-            reject(new Error('Video load timeout'))
-          }, 10000) // 10 second timeout
-          
-          if (video.readyState >= 2) {
-            clearTimeout(timeout)
-            resolve(true)
-          } else {
-            const handleLoadedData = () => {
-              clearTimeout(timeout)
-              resolve(true)
-            }
-            const handleError = () => {
-              clearTimeout(timeout)
-              reject(new Error('Video failed to load'))
-            }
-            
-            video.addEventListener('loadeddata', handleLoadedData, { once: true })
-            video.addEventListener('error', handleError, { once: true })
-          }
+      if (index === currentVideoIndex) {
+        // Play current video
+        video.play().catch((error) => {
+          console.error(`Error playing video ${index}:`, error)
+          setVideoErrors(prev => new Set(prev).add(index))
         })
-        
-        console.log('Video loaded successfully, attempting to play')
-        
-        // Only play if not already playing
-        if (video.paused) {
-          await video.play()
-          console.log('Video playing successfully')
-        }
-      } catch (error) {
-        console.error('Video error:', error instanceof Error ? error.message : 'Unknown error')
-        console.error('Video src:', video.src)
-        console.error('Video error details:', video.error)
-      } finally {
-        setIsLoading(false)
+      } else {
+        // Pause other videos
+        video.pause()
+        video.currentTime = 0
       }
-    }
+    })
+  }, [currentVideoIndex])
 
-    loadAndPlay()
-  }, [currentVideoIndex, isLoading])
-
-  // Ensure video plays when it becomes visible
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && video.paused && !isLoading) {
-            video.play().catch(console.error)
-          }
-        })
-      },
-      { threshold: 0.5 }
-    )
-
-    observer.observe(video)
+  // Handle video errors
+  const handleVideoError = (index: number) => {
+    console.error(`Video ${index} failed to load`)
+    setVideoErrors(prev => new Set(prev).add(index))
     
-    return () => {
-      observer.disconnect()
+    // If current video fails, try next one
+    if (index === currentVideoIndex) {
+      setTimeout(() => {
+        setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
+      }, 1000)
     }
-  }, [isLoading])
+  }
+
+  // Manual navigation functions
+  const goToNextVideo = () => {
+    setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)
+  }
+
+  const goToPreviousVideo = () => {
+    setCurrentVideoIndex((prevIndex) => (prevIndex - 1 + videos.length) % videos.length)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -176,43 +140,106 @@ export default function About() {
         </div>
       </section>
 
-      {/* Video Section */}
+      {/* Video Carousel Section */}
       <section className="relative bg-black">
         <div className="max-w-7xl mx-auto">
-          <div className="relative aspect-video w-full">
-            <video
-              ref={videoRef}
-              className="w-full h-full object-contain bg-black"
-              muted
-              autoPlay
-              loop={false}
-              playsInline
-              preload="metadata"
-              onError={(e) => {
-                console.error('Video element error:', e)
-                console.error('Video src:', videos[currentVideoIndex])
-              }}
-              onLoadStart={() => console.log('Video load started')}
-              onLoadedData={() => console.log('Video data loaded')}
-              onCanPlay={() => console.log('Video can play')}
-            >
-              <source src={videos[currentVideoIndex]} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <h2 className="text-heading text-white mb-4">Our Story</h2>
-                <p className="text-white text-lg max-w-2xl mx-auto">
-                  Watch our journey from vision to reality
-                </p>
-                {isLoading && (
-                  <div className="mt-4">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
-                    <p className="text-white text-sm mt-2">Loading video...</p>
-                  </div>
-                )}
+          <div className="relative aspect-video w-full overflow-hidden">
+            {/* Video Carousel */}
+            <div className="relative w-full h-full">
+              {videos.map((videoSrc, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    index === currentVideoIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <video
+                    ref={(el) => (videoRefs.current[index] = el)}
+                    className="w-full h-full object-cover"
+                    muted
+                    loop={false}
+                    playsInline
+                    preload="metadata"
+                    onError={() => handleVideoError(index)}
+                    onLoadStart={() => console.log(`Video ${index} load started`)}
+                    onLoadedData={() => console.log(`Video ${index} data loaded`)}
+                    onCanPlay={() => console.log(`Video ${index} can play`)}
+                  >
+                    <source src={videoSrc} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  
+                  {/* Dark overlay for non-active videos */}
+                  {index !== currentVideoIndex && (
+                    <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+                  )}
+                  
+                  {/* Error fallback */}
+                  {videoErrors.has(index) && (
+                    <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+                      <div className="text-center text-white">
+                        <div className="text-6xl mb-4">📹</div>
+                        <p className="text-lg">Video {index + 1} unavailable</p>
+                        <p className="text-sm text-gray-400">Format not supported</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            {/* Overlay Content */}
+            <div className="absolute inset-0 bg-black bg-opacity-20 pointer-events-none">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <h2 className="text-heading text-white mb-4">Our Story</h2>
+                  <p className="text-white text-lg max-w-2xl mx-auto">
+                    Watch our journey from vision to reality
+                  </p>
+                </div>
               </div>
+            </div>
+            
+            {/* Navigation Arrows */}
+            <button
+              onClick={goToPreviousVideo}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300"
+              aria-label="Previous video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            
+            <button
+              onClick={goToNextVideo}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-75 text-white p-3 rounded-full transition-all duration-300"
+              aria-label="Next video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            
+            {/* Video Navigation Dots */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {videos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentVideoIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentVideoIndex
+                      ? 'bg-white scale-125'
+                      : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+                  }`}
+                  aria-label={`Go to video ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            {/* Video Counter */}
+            <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm">
+              {currentVideoIndex + 1} / {videos.length}
             </div>
           </div>
         </div>
@@ -296,7 +323,7 @@ export default function About() {
 
           {/* Royal Dutch Beer Image */}
           <div className="flex justify-center rounded-xl">
-            <img src="/public/rico website/Pictures/beer 9.png" alt="Royal Dutch Beer" className="w-full max-w-lg h-[600px] object-contain rounded-xl" />
+            <img src="/rico website/Pictures/beer 9.png" alt="Royal Dutch Beer" className="w-full max-w-lg h-[600px] object-contain rounded-xl" />
           </div>
         </div>
       </section>
