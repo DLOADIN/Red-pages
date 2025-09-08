@@ -294,10 +294,10 @@ export default function Layout({ children }: LayoutProps) {
             <div className="text-center md:text-left">
               <h4 className="font-semibold mb-4 text-gray-200">Follow Us On Instagram</h4>
               <div className="grid grid-cols-2 gap-2 max-w-xs mx-auto md:mx-0">
-                <img src="/countre-chocolate-bottle.png" alt="Chocolate Milk Drink" className="rounded w-full h-auto" />
-                <img src="/countre-banana-bottle.png" alt="Banana Milk Drink" className="rounded w-full h-auto" />
-                <img src="/countre-strawberry-bottle.png" alt="Strawberry Milk Drink" className="rounded w-full h-auto" />
-                <img src="/countre-vanilla-bottle.png" alt="Vanilla Milk Drink" className="rounded w-full h-auto" />
+                <img src="/rico website/countre-chocolate-bottle.png" alt="Chocolate Milk Drink" className="rounded w-full h-auto" />
+                <img src="/rico website/countre-banana-bottle.png" alt="Banana Milk Drink" className="rounded w-full h-auto" />
+                <img src="/rico website/countre-strawberry-bottle.png" alt="Strawberry Milk Drink" className="rounded w-full h-auto" />
+                <img src="/rico website/countre-vanilla-bottle.png" alt="Vanilla Milk Drink" className="rounded w-full h-auto" />
               </div>
             </div>
           </div>
