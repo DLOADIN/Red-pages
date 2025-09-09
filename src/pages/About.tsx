@@ -372,8 +372,8 @@ export default function About() {
           </div>
 
           {/* Product Image */}
-          <div className="flex justify-center rounded-xl">
-            <img src="/flavored-milk-bottles-colorful.png" alt="Featured Product" className="w-full max-w-lg h-[600px] object-contain rounded-xl" />
+          <div className="flex justify-center">
+            <img src="/rico website/pexels-pixabay-248412.jpg" alt="Featured Product" className="w-full max-w-lg h-[600px] rounded-2xl" />
           </div>
         </div>
       </section>
