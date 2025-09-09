@@ -150,7 +150,7 @@ export default function About() {
                 style={{ transform: `translateX(-${currentVideoIndex * 384}px)` }}
               >
                 {videos.map((videoSrc, index) => (
-                  <div key={index} className="flex-shrink-0 w-[60vh]">
+                  <div key={index} className="flex-shrink-0 w-fit">
                     {/* Individual Carousel Container */}
                     <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
                       {/* Video Container */}
