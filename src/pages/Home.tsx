@@ -8,11 +8,14 @@ export default function Home() {
   const [isPaused, setIsPaused] = useState(false)
   
   const slides = [
-    "/rico website/Foods/pexels-814191500-19362408.jpg",
-    "/rico website/Foods/pexels-jeshoots-230743.jpg", 
-    "/rico website/Foods/pexels-makafood-82669418-8952753.jpg",
-    "/rico website/Foods/pexels-pixabay-208453.jpg",
-    "/rico website/Foods/pexels-valeriya-18852576.jpg"
+    "/Backgrounds/pexels-karoldach-317969.jpg",
+    "/Backgrounds/pexels-kindelmedia-8352353.jpg", 
+    "/Backgrounds/pexels-mareefe-1022385.jpg",
+    "/Backgrounds/pexels-nastyasensei-66707-821365.jpg",
+    "/Backgrounds/pexels-pixabay-236010.jpg",
+    "/Backgrounds/pexels-pixabay-266706.jpg",
+    "/Backgrounds/pexels-suzyhazelwood-1325467.jpg",
+    "/Backgrounds/pexels-pixabay-65882.jpg"
   ]
 
   // Auto-play slideshow with pause on hover
@@ -216,7 +219,7 @@ export default function Home() {
                 <div className="space-y-1 md:space-y-2 text-xs md:text-sm">
                   <p>📞 +44 7572 795578</p>
                   <p>✉️ roman@rico-distribution-international.co.uk</p>
-                  <p>📍 79 Kingsley Close, Reading, RG2 8TX, United Kingdom</p>
+                  <p>📍 Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</p>
                 </div>
               </div>
             </div>

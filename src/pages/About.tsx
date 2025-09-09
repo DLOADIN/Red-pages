@@ -107,7 +107,7 @@ export default function About() {
                   <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
                     <span className="text-[#ad343e] text-xs">📍</span>
                   </div>
-                  <span className="text-sm">79 Kingsley Close, Reading, RG2 8TX, United Kingdom</span>
+                  <span className="text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
                 </div>
               </div>
             </div>
@@ -389,7 +389,7 @@ export default function About() {
               <img src="/rico website/logo/carrefour logo.png" alt="Carrefour Cameroun" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
-              <img src="/rico website/logo/Santa lucia logo.jpg" alt="Santa Lucia" className="max-w-full h-16 object-contain" />
+              <img src="/rico website/logo/santa.jpg" alt="Santa Lucia" className="max-w-full h-36 object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex items-center justify-center">
               <img src="/rico website/logo/dovv logo.png" alt="DOVV" className="max-w-full h-36 object-contain" />
