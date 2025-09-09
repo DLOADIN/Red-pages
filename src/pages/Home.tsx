@@ -264,17 +264,6 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/Zo/new/hills biscuit logo.jpg" alt="Countre" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Hill Biscuits</h3>
-              <p className="text-sm text-gray-600">
-                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
-                moment.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
                 <img src="/Zo/new/MainImage.png" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Haribo</h3>
@@ -293,6 +282,18 @@ export default function Home() {
                 John & Isabella Paterson founded their bakery in the Royal Burgh of Rutherglen, Scotland, where they sold their home baked goods from a horse-drawn van.
               </p>
             </div>
+
+            <div className="text-center">
+              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+                <img src="/Zo/new/hills biscuit logo.jpg" alt="Countre" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Hill Biscuits</h3>
+              <p className="text-sm text-gray-600">
+                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
+                moment.
+              </p>
+            </div>
+
 
           </div>
 
