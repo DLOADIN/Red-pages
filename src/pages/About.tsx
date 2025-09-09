@@ -371,9 +371,9 @@ export default function About() {
             </div>
           </div>
 
-          {/* Royal Dutch Beer Image */}
+          {/* Product Image */}
           <div className="flex justify-center rounded-xl">
-            <img src="/rico website/Pictures/beer 9.png" alt="Royal Dutch Beer" className="w-full max-w-lg h-[600px] object-contain rounded-xl" />
+            <img src="/flavored-milk-bottles-colorful.png" alt="Featured Product" className="w-full max-w-lg h-[600px] object-contain rounded-xl" />
           </div>
         </div>
       </section>

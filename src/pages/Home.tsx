@@ -207,8 +207,8 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="relative flex justify-center lg:justify-start">
               <img
-                src="/rico website/Pictures/beer 7.png"
-                alt="Premium Beer Products"
+                src="/flavored-milk-bottles-colorful.png"
+                alt="Premium Beverage Products"
                 className="w-full max-w-[400px] md:max-w-[500px] h-auto md:h-[650px] object-cover rounded-lg relative z-10"
               />
               <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-[#ad343e] p-4 md:p-6 rounded-lg text-white z-20 shadow-lg max-w-[280px] md:max-w-none">

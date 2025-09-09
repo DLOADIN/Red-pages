@@ -15,21 +15,9 @@ export default function Products() {
 
   const items: ProductItem[] = useMemo(
     () => [
-      // Drinks - Beers and beverages
-      { id: "beer-1", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%201.png", category: "Drinks" },
-      { id: "beer-2", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%202.png", category: "Drinks" },
-      { id: "beer-3", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%203.png", category: "Drinks" },
-      { id: "beer-4", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%204.png", category: "Drinks" },
-      { id: "beer-5", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%205.png", category: "Drinks" },
-      { id: "beer-6", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%206.png", category: "Drinks" },
-      { id: "beer-7", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%207.png", category: "Drinks" },
-      { id: "beer-8", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%208.png", category: "Drinks" },
-      { id: "beer-9", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%209.png", category: "Drinks" },
-      { id: "beer-10", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%2010.png", category: "Drinks" },
-      { id: "beer-11", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/beer%2011.png", category: "Drinks" },
-      { id: "dutch-beer", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/dutch%20beer.png", category: "Drinks" },
-      { id: "energy", brand: "Energy Drink", product: "Energy Drinks", image: "/rico%20website/Pictures/energy%20drinks.jpg", category: "Drinks" },
-      { id: "juice", brand: "Euro Shopper", product: "Juice", image: "/rico%20website/Pictures/juice%20euro%20shopper.webp", category: "Drinks" },
+      // Drinks - beverages (non-alcoholic)
+      // { id: "energy", brand: "Energy Drink", product: "Energy Drinks", image: "/rico%20website/Pictures/energy%20drinks.jpg", category: "Drinks" },
+      // { id: "juice", brand: "Euro Shopper", product: "Juice", image: "/rico%20website/Pictures/juice%20euro%20shopper.webp", category: "Drinks" },
       // { id: "u-db-photo", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/United%20dutch%20brewery.jpeg", category: "Drinks" },
 
       // Dairy - Countre & Dairyland
@@ -97,7 +85,7 @@ export default function Products() {
 
       {/* Filter Tabs */}
       <div className="flex justify-center gap-3 mb-12 flex-wrap">
-        {(["All", "Dairy", "Drinks", "Dry Products", "Frozen Products"] as Category[]).map((tab) => (
+        {(["All", "Dairy", "Dry Products", "Frozen Products"] as Category[]).map((tab) => (
           <button
             key={tab}
             onClick={() => setActive(tab)}
@@ -141,13 +129,7 @@ export default function Products() {
 
         {/* Cards styled to match the screenshots exactly */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 justify-items-center">
-          {/* UNITED DUTCH BREWERY */}
-          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
-              <div>UNITED DUTCH</div>
-              <div>BREWERY</div>
-            </div>
-          </div>
+          {/* UNITED DUTCH BREWERY removed */}
           {/* HIGHLAND SPECIALITY */}
           <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
             <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
