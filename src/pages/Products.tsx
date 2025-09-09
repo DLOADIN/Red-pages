@@ -52,6 +52,29 @@ export default function Products() {
       { id: "honey", brand: "Garusana", product: "Honey", image: "/rico%20website/Pictures/honey.png", category: "Dry Products" },
       { id: "oil", brand: "Garusana", product: "Cooking Oil", image: "/rico%20website/Pictures/oil%20.png", category: "Dry Products" },
 
+      // Hills Biscuits Products
+      { id: "hills-1", brand: "Hills Biscuits", product: "Biscuits", image: "/Zo/new/FOlder/hills%201.webp", category: "Dry Products" },
+      { id: "hills-2", brand: "Hills Biscuits", product: "Biscuits", image: "/Zo/new/FOlder/hills%202.webp", category: "Dry Products" },
+      { id: "hills-3", brand: "Hills Biscuits", product: "Biscuits", image: "/Zo/new/FOlder/hills%203.webp", category: "Dry Products" },
+      { id: "hills-4", brand: "Hills Biscuits", product: "Biscuits", image: "/Zo/new/FOlder/hills%204.png", category: "Dry Products" },
+      { id: "hills-5", brand: "Hills Biscuits", product: "Biscuits", image: "/Zo/new/FOlder/hills%205.webp", category: "Dry Products" },
+      { id: "hills-6", brand: "Hills Biscuits", product: "Biscuits", image: "/Zo/new/FOlder/hills%206.png", category: "Dry Products" },
+
+      // Mega Whale Products
+      { id: "mega-whale-1", brand: "Mega Whale", product: "Biscuits", image: "/Zo/new/FOlder/mega%20whale%204.jpeg", category: "Dry Products" },
+      { id: "mega-whale-2", brand: "Mega Whale", product: "Biscuits", image: "/Zo/new/FOlder/mega%20whale%20biscuit%201.jpg", category: "Dry Products" },
+      { id: "mega-whale-3", brand: "Mega Whale", product: "Biscuits", image: "/Zo/new/FOlder/mega%20whale%20biscuit%202.webp", category: "Dry Products" },
+      { id: "mega-whale-4", brand: "Mega Whale", product: "Biscuits", image: "/Zo/new/FOlder/mega%20whale%20biscuit%203.jpg", category: "Dry Products" },
+
+      // English Cheese Products
+      { id: "english-cheese-1", brand: "English Cheese", product: "Cheese", image: "/Zo/new/FOlder/the%20english%20cheese%201.png", category: "Dry Products" },
+      { id: "english-cheese-2", brand: "English Cheese", product: "Cheese", image: "/Zo/new/FOlder/the%20english%20cheese%202.jpg", category: "Dry Products" },
+
+      // Garusana Additional Products
+      { id: "garusana-new-1", brand: "Garusana", product: "Food Products", image: "/Zo/new/FOlder/Garusana%20product%201.webp", category: "Dry Products" },
+      { id: "garusana-new-2", brand: "Garusana", product: "Food Products", image: "/Zo/new/FOlder/garusana%20product%202.webp", category: "Dry Products" },
+      { id: "English", brand: "Garusana", product: "Cooking Oil", image: "/rico%20website/Pictures/oil%20.png", category: "Dry Products" },
+
       // Frozen Products
       { id: "frozen-fish", brand: "Chef's", product: "Fish", image: "/rico%20website/Pictures/Fish.jpeg", category: "Frozen Products" },
       { id: "frozen-porc", brand: "Geko", product: "Porc", image: "/rico%20website/Pictures/pork.jpeg", category: "Frozen Products" },
