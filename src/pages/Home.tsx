@@ -271,15 +271,6 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/rico website/logo/images.jpg" alt="Dairyland" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Dairyland</h3>
-              <p className="text-sm text-gray-600">
-                Dairyland delivers fresh, high-quality dairy products that bring taste and nutrition to every table.
-              </p>
-            </div>
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>

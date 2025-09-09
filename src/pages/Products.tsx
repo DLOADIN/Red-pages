@@ -20,7 +20,7 @@ export default function Products() {
       // { id: "juice", brand: "Euro Shopper", product: "Juice", image: "/rico%20website/Pictures/juice%20euro%20shopper.webp", category: "Drinks" },
       // { id: "u-db-photo", brand: "United Dutch Brewery", product: "Beer", image: "/rico%20website/Pictures/United%20dutch%20brewery.jpeg", category: "Drinks" },
 
-      // Dairy - Countre & Dairyland
+      // Dairy - Countre
       { id: "countre-1", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%201.png", category: "Dairy" },
       { id: "countre-2", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%202.png", category: "Dairy" },
       { id: "countre-4", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%204.png", category: "Dairy" },
@@ -30,11 +30,6 @@ export default function Products() {
       { id: "countre-strw", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%20strw.png", category: "Dairy" },
       { id: "countre-vanilla", brand: "Countre", product: "Flavored Milk", image: "/rico%20website/Pictures/countre%20vanilla.png", category: "Dairy" },
       { id: "countre-whole", brand: "Countre", product: "Whole Milk", image: "/rico%20website/Pictures/countre%20whole%20milk.png", category: "Dairy" },
-      { id: "dairyland-1", brand: "Dairyland", product: "Ice Cream", image: "/rico%20website/Pictures/daryland%20ice%20cream.png", category: "Dairy" },
-      { id: "dairyland-2", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/daryland%201.png", category: "Dairy" },
-      { id: "dairyland-3", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/dairyland%202.png", category: "Dairy" },
-      { id: "dairyland-4", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/dairyland%203.png", category: "Dairy" },
-      { id: "dairyland-5", brand: "Dairyland", product: "Dairy", image: "/rico%20website/Pictures/dairyland%204.png", category: "Dairy" },
 
       // Dry Products - Biscuits, Honey, Oil, Chocolate
       { id: "gullon-1", brand: "Gullon", product: "Biscuits", image: "/rico%20website/Pictures/gullon%201.png", category: "Dry Products" },
@@ -56,14 +51,16 @@ export default function Products() {
       { id: "lady-fingers", brand: "Gullon", product: "Lady Fingers", image: "/rico%20website/Pictures/lady%20fingers.png", category: "Dry Products" },
       { id: "honey", brand: "Garusana", product: "Honey", image: "/rico%20website/Pictures/honey.png", category: "Dry Products" },
       { id: "oil", brand: "Garusana", product: "Cooking Oil", image: "/rico%20website/Pictures/oil%20.png", category: "Dry Products" },
-      { id: "dairy-choco", brand: "Dairyland", product: "Chocolate", image: "/rico%20website/Pictures/choco%20dairyland.png", category: "Dry Products" },
-      { id: "dairy-chips", brand: "Dairyland", product: "Irish Potato Chips", image: "/rico%20website/Pictures/WhatsApp Image 2025-08-31 at 10.54.56 AM (2).jpeg", category: "Dry Products" },
 
       // Frozen Products
-      { id: "frozen-fish", brand: "Frozen", product: "Fish", image: "/rico%20website/Pictures/Fish.jpeg", category: "Frozen Products" },
-      { id: "frozen-porc", brand: "Frozen", product: "Porc", image: "/rico%20website/Pictures/pork.jpeg", category: "Frozen Products" },
-      { id: "frozen-Packaged-chicken", brand: "Frozen", product: "Frozen-Packaged-chicken", image: "/rico%20website/Pictures/Other%20Chicken.jpeg", category: "Frozen Products" },
-      { id: "frozen-chickens", brand: "Frozen", product: "Chicken", image: "/rico%20website/Pictures/chicken.jpeg", category: "Frozen Products" },
+      { id: "frozen-fish", brand: "Chef's", product: "Fish", image: "/rico%20website/Pictures/Fish.jpeg", category: "Frozen Products" },
+      { id: "frozen-porc", brand: "Geko", product: "Porc", image: "/rico%20website/Pictures/pork.jpeg", category: "Frozen Products" },
+      { id: "frozen-potatoes", brand: "chef's", product: "Potatoes", image: "/rico%20website/Pictures/WhatsApp Image 2025-08-31 at 10.54.56 AM (2).jpeg", category: "Frozen Products" },
+      { id: "frozen-chickens", brand: "Geko", product: "Chicken", image: "/rico%20website/Pictures/chicken.jpeg", category: "Frozen Products" },
+      { id: "frozen-Packaged-chicken", brand: "Geko", product: "Chicken", image: "/Zo/new/geko frozen chicken.jpg", category: "Frozen Products" },
+      { id: "frozen-Packaged-chicken", brand: "Geko", product: "Potatoes", image: "/Zo/new/frozen geko potatoes.jpg", category: "Frozen Products" },
+
+      
     ],
     []
   )
@@ -129,41 +126,45 @@ export default function Products() {
 
         {/* Cards styled to match the screenshots exactly */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 justify-items-center">
-          {/* UNITED DUTCH BREWERY removed */}
-          {/* HIGHLAND SPECIALITY */}
+          {/* KUHNE + HEITZ */}
           <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
             <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
-              <div>HIGHLAND</div>
-              <div>SPECIALITY</div>
+              <div>KUHNE + HEITZ</div>
             </div>
           </div>
-          {/* PATERSON'S */}
+          {/* GAROUSCA */}
           <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">PATERSON’S</div>
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">GAROUSCA</div>
           </div>
-          {/* KRIOS */}
+          {/* HILL BISCUITS */}
           <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">KRIOS</div>
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">HILL BISCUITS</div>
           </div>
-          {/* COUNTRE */}
+          {/* HIGHLAND SPECIALITY SHORTBREAD */}
           <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">COUNTRE</div>
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
+              <div>HIGHLAND SPECIALITY</div>
+              <div>SHORTBREAD</div>
+            </div>
+          </div>
+          {/* PATERSONS SHORTBREAD */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">
+              <div>PATERSONS</div>
+              <div>SHORTBREAD</div>
+          </div>
+          </div>
+          {/* HARIBO */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">HARIBO</div>
+          </div>
+          {/* CRETORS USA */}
+          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
+            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">CRETORS USA</div>
           </div>
           {/* GULLON */}
           <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
             <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">GULLON</div>
-          </div>
-          {/* GARUSANA */}
-          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">GARUSANA</div>
-          </div>
-          {/* MEGA WHALE */}
-          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">MEGA WHALE</div>
-          </div>
-          {/* DOSPANI */}
-          <div className="w-[200px] h-[70px] bg-white rounded-[12px] border border-[#f9f9f7] shadow-[0_3px_60px_0_rgba(0,0,0,0.05)] flex items-center justify-center text-center">
-            <div className="[font-family:var(--second-family)] font-bold text-[26px] leading-[83%] tracking-[-0.03em] text-[#e40d0d]">DOSPANI</div>
           </div>
         </div>
       </div>

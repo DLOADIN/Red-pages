@@ -130,9 +130,8 @@ export default function Contact() {
         <div>
           <h3 className="text-xl font-semibold text-[#2c2f24] mb-4">Our Location:</h3>
           <div className="space-y-1">
-            <p className="text-small">79 Kingsley Close,</p>
-            <p className="text-small">Reading, RG 30 3TX, United</p>
-            <p className="text-small">Kingdom</p>
+            {/* <p className="text-small">79 Kingsley Close,</p> */}
+            <p className="text-small"> Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</p>
           </div>
         </div>
       </section>
