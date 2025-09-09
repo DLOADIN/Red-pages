@@ -271,7 +271,7 @@ export default function Home() {
                 Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
                 moment.
               </p>
-            </div>MainImage.png
+            </div>
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
@@ -284,7 +284,15 @@ export default function Home() {
               </p>
             </div>
 
-
+            <div className="text-center">
+              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+                <img src="/Zo/new/download.png" alt="Countre" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Patterson Short Bread</h3>
+              <p className="text-sm text-gray-600">
+                John & Isabella Paterson founded their bakery in the Royal Burgh of Rutherglen, Scotland, where they sold their home baked goods from a horse-drawn van.
+              </p>
+            </div>
 
           </div>
 
