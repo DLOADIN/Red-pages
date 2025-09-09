@@ -65,7 +65,7 @@ export default function About() {
   }
 
   // Handle video end
-  const handleVideoEnd = (index: number) => {
+  const handleVideoEnd = () => {
     setPlayingVideoIndex(null)
   }
 
@@ -163,7 +163,7 @@ export default function About() {
                           playsInline
                           preload="metadata"
                           onError={() => handleVideoError(index)}
-                          onEnded={() => handleVideoEnd(index)}
+                          onEnded={handleVideoEnd}
                         >
                           <source src={videoSrc} type="video/mp4" />
                         </video>
