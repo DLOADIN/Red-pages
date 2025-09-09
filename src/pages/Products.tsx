@@ -57,7 +57,7 @@ export default function Products() {
       { id: "frozen-porc", brand: "Geko", product: "Porc", image: "/rico%20website/Pictures/pork.jpeg", category: "Frozen Products" },
       { id: "frozen-potatoes", brand: "chef's", product: "Potatoes", image: "/rico%20website/Pictures/WhatsApp Image 2025-08-31 at 10.54.56 AM (2).jpeg", category: "Frozen Products" },
       { id: "frozen-chickens", brand: "Geko", product: "Chicken", image: "/rico%20website/Pictures/chicken.jpeg", category: "Frozen Products" },
-      
+      { id: "frozen-chickened", brand: "Geko", product: "Chickened", image: "/Zo/new/geko frozen chicken.jpg", category: "Frozen Products" },
       { id: "frozen-Packaged-chickens", brand: "Geko", product: "Potatoes", image: "/Zo/new/frozen geko potatoes.jpg", category: "Frozen Products" },
     ],
     []
