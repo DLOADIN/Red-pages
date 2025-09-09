@@ -249,16 +249,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">Our brands</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/rico website/logo/bigtree.png" alt="Bigtree" className="w-full h-full object-contain" />
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Bigtree</h3>
-              <p className="text-sm text-gray-600">
-                BigTree offers a wide range of high-quality food products, trusted by businesses and communities for
-                their consistency and value.
-              </p>
-            </div>
+            
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
@@ -271,17 +262,30 @@ export default function Home() {
               </p>
             </div>
 
+            <div className="text-center">
+              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+                <img src="/Zo/new/hills biscuit logo.jpg" alt="Countre" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Hill Biscuits</h3>
+              <p className="text-sm text-gray-600">
+                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
+                moment.
+              </p>
+            </div>MainImage.png
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/laitel-logo.png" alt="Laitel" className="w-full h-full object-contain" />
+                <img src="/Zo/new/MainImage.png" alt="Countre" className="w-full h-full object-contain" />
               </div>
-              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Laitel</h3>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Haribo</h3>
               <p className="text-sm text-gray-600">
-                Laitel provides premium milk products, combining quality and freshness to satisfy every household and
-                business need.
+                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
+                moment.
               </p>
             </div>
+
+
+
           </div>
 
           <div className="text-center mt-6 md:mt-8">
@@ -343,6 +347,38 @@ export default function Home() {
                 products for everyday living.
               </p>
             </div>
+
+            <div className="text-center">
+              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+                <img src="/Zo/new/cretors logo.webp" alt="Cretors" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Cretors</h3>
+              <p className="text-sm text-gray-600">
+                Cretors is a leading manufacturer of popcorn and snack food equipment, known for their innovative
+                and reliable commercial food processing solutions.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+                <img src="/Zo/new/chef's heitz logo.jpg" alt="Kuhne + Heitz" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Kuhne + Heitz</h3>
+              <p className="text-sm text-gray-600">
+                Kuhne + Heitz is a premium food distribution company specializing in high-quality European
+                products and gourmet food items for discerning customers.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+                <img src="/Zo/new/geko logo heitz.jpg" alt="Kuhne + Heitz" className="w-full h-full object-contain" />
+              </div>
+              <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Geko</h3>
+              <p className="text-sm text-gray-600">
+                Geko offers fast and friendly service with affordable prices and stock a range of tried and tested quality diets for your fruit eating geckos.
+              </p>
+            </div>
           </div>
 
           <div className="text-center mt-6 md:mt-8">
@@ -350,7 +386,7 @@ export default function Home() {
               variant="outline"
               className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
             >
-              <Link to="/contact">More Clients</Link>
+              <Link to="/Products#our-brands">More Clients</Link>
             </Button>
           </div>
         </div>
