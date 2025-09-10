@@ -94,7 +94,7 @@ export default function Home() {
               Your trusted partner for premium food and beverage distribution worldwide. 
               Connecting quality products with global markets.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
               <Button className="bg-[#ad343e] hover:bg-red-600 text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 <Link to="/products">Explore Products</Link>
               </Button>
@@ -212,9 +212,9 @@ export default function Home() {
               <img
                 src="/rico website/KUbern/drink_countre_1750309200_3658181260225115257_73638498330.jpg"
                 alt="Premium Beverage Products"
-                className="w-[80vh] md:max-w-[100vh] h-[65vh] object-cover rounded-lg relative z-10"
+                className="w-[70vh] md:max-w-[100vh] h-[65vh] object-cover rounded-lg relative z-10"
               />
-              <div className="pt-[80vh]">
+              <div className="pt-[70vh]">
               <div className="absolute -bottom-4 md:-bottom-6 left-36  bg-[#ad343e] p-4 md:p-6 rounded-lg text-white z-20 shadow-lg max-w-[280px] md:max-w-none">
                 <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Feel free to contact us</h3>
                 <div className="space-y-1 md:space-y-2 text-xs md:text-sm">
