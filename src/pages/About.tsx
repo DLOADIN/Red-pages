@@ -74,21 +74,14 @@ export default function About() {
       {/* Our Debut Section */}
       <section className="relative py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Product Images */}
+          {/* Product Image */}
           <div className="relative">
-            <div className="grid grid-cols-2 gap-6">
-              <img src="/rico website/Pictures/countre vanilla.png" alt="Countre Banana" className="w-full h-64 rounded-xl object-contain" />
-              <img src="/rico website/Pictures/gullon 3.png" alt="Countre Chocolate" className="w-full h-64 rounded-xl object-contain" />
-              <img src="/Zo/new/FOlder/Garusana product 1.webp" alt="Countre Vanilla" className="w-full h-64 rounded-xl object-contain" />
-              <img
-                src="/rico website/Pictures/countre 1.png"
-                alt="Countre Strawberry"
-                className="rounded-xl w-full h-64 rounded-xl object-contain"
-              />
+            <div className="relative">
+              <img src="/rico website/KUbern/drink_countre_1748928836_3646601843342136806_73638498330.jpg" alt="Countre Drink" className="w-full h-full rounded-xl object-cover" />
             </div>
 
             {/* Contact Overlay */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[300px]">
+            <div className="absolute top-3/2 left-3/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[300px]">
               <h3 className="text-xl font-semibold mb-6 text-center">Reach out to us</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
