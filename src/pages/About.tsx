@@ -81,7 +81,7 @@ export default function About() {
             </div>
 
             {/* Contact Overlay */}
-            <div className="absolute top-3/6 left-[75vh] transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[300px]">
+            <div className="absolute top-[28vw] left-[40vh] transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[400px]">
               <h3 className="text-xl font-semibold mb-6 text-center">Reach out to us</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -124,7 +124,7 @@ export default function About() {
       </section>
 
       {/* Video Carousel Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-28 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
