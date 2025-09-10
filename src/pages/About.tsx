@@ -74,13 +74,16 @@ export default function About() {
       {/* Our Debut Section */}
       <section className="relative py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Product Image */}
-          <div className="relative">
-            <div className="relative rounded-xl">
-              <img src="/rico website/KUbern/drink_countre_1748928836_3646601843342136806_73638498330.jpg" alt="Countre Drink" className="w-full h-full rounded-2xl object-cover" />
-            </div>
-
-            {/* Contact Overlay */}
+          {/* Product Image with Contact Overlay - Inseparable Group */}
+          <div className="relative group">
+            {/* Product Image */}
+            <img 
+              src="/rico website/pexels-izabrella-921714.jpg" 
+              alt="Countre Drink" 
+              className="w-full h-[300px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[600px] object-cover rounded-2xl" 
+            />
+            
+            {/* Contact Overlay - Positioned relative to the image */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Reach out to us</h3>
               <div className="space-y-3 sm:space-y-4">

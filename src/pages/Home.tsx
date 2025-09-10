@@ -208,21 +208,38 @@ export default function Home() {
       <section className="py-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="relative flex justify-center lg:justify-start">
+            {/* Product Image with Contact Overlay - Inseparable Group */}
+            <div className="relative group">
+              {/* Product Image */}
               <img
-                src="/rico website/KUbern/drink_countre_1750309200_3658181260225115257_73638498330.jpg"
+                src="/rico website/pexels-polina-tankilevitch-4187715.jpg"
                 alt="Premium Beverage Products"
-                className="w-[70vh] md:max-w-[100vh] h-[65vh] object-cover rounded-lg relative z-10"
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] object-cover rounded-lg"
               />
-              <div className="pt-[70vh]">
-              <div className="absolute -bottom-4 md:-bottom-6 left-36  bg-[#ad343e] p-4 md:p-6 rounded-lg text-white z-20 shadow-lg max-w-[280px] md:max-w-none">
-                <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Feel free to contact us</h3>
-                <div className="space-y-1 md:space-y-2 text-xs md:text-sm">
-                  <p>📞 +44 7572 795578</p>
-                  <p>✉️ roman@rico-distribution-international.co.uk</p>
-                  <p>📍 Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</p>
+              
+              {/* Contact Overlay - Positioned relative to the image */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
+                <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Feel free to contact us</h3>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#ad343e] text-xs">📞</span>
+                    </div>
+                    <span className="text-xs sm:text-sm">+44 7572 795578</span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#ad343e] text-xs">✉</span>
+                    </div>
+                    <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#ad343e] text-xs">📍</span>
+                    </div>
+                    <span className="text-xs sm:text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
             <div className="text-center lg:text-left">
