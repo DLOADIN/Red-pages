@@ -5,6 +5,7 @@ export default function About() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
   const [playingVideoIndex, setPlayingVideoIndex] = useState<number | null>(null)
   const [videoErrors, setVideoErrors] = useState<Set<number>>(new Set())
+  const [isZoomedOut, setIsZoomedOut] = useState(false)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   
   const videos = [
@@ -19,6 +20,26 @@ export default function About() {
   useEffect(() => {
     videoRefs.current = videoRefs.current.slice(0, videos.length)
   }, [videos.length])
+
+  // Detect zoom level and screen size changes
+  useEffect(() => {
+    const checkZoomLevel = () => {
+      // More accurate zoom detection
+      const zoomLevel = Math.round((window.outerWidth / window.innerWidth) * 100) / 100
+      const isZoomed = zoomLevel >= 1.5 || window.innerWidth <= 1200 // 67% zoom or smaller screen
+      setIsZoomedOut(isZoomed)
+    }
+
+    // Check on mount and resize
+    checkZoomLevel()
+    window.addEventListener('resize', checkZoomLevel)
+    window.addEventListener('orientationchange', checkZoomLevel)
+    
+    return () => {
+      window.removeEventListener('resize', checkZoomLevel)
+      window.removeEventListener('orientationchange', checkZoomLevel)
+    }
+  }, [])
 
   // Navigation functions
   const goToNext = () => {
@@ -74,17 +95,62 @@ export default function About() {
       {/* Our Debut Section */}
       <section className="relative py-16 px-4">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Product Image with Contact Overlay - Inseparable Group */}
+          {/* Product Image */}
           <div className="relative group">
-            {/* Product Image */}
             <img 
               src="/rico website/pexels-izabrella-921714.jpg" 
               alt="Countre Drink" 
               className="w-full h-[300px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[600px] object-cover rounded-2xl" 
             />
             
-            {/* Contact Overlay - Positioned relative to the image */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
+            {/* Contact Overlay - Only show when NOT zoomed out */}
+            {!isZoomedOut && (
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
+                <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Reach out to us</h3>
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#ad343e] text-xs">📞</span>
+                    </div>
+                    <span className="text-xs sm:text-sm">+44 7572 762578</span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#ad343e] text-xs">✉</span>
+                    </div>
+                    <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-[#ad343e] text-xs">📍</span>
+                    </div>
+                    <span className="text-xs sm:text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Our Debut Content */}
+          <div>
+            <h1 className="text-heading mb-6">Our Debut</h1>
+            <p className="text-paragraph mb-6">
+              Our journey began when our founder, an African living in the UK, recognized a gap in the flow of quality
+              food products between producers and the growing markets in Africa and Europe. Driven by a vision to bridge
+              this gap, he seized the opportunity to build a trusted distribution network that connects continents,
+              supports businesses, and ensures access to diverse, high-quality food for all.
+            </p>
+            <p className="text-small">
+              We started with our founder country of origin, Cameroon. We bridge the gap between well-known products
+              from Europe to Cameroon and vice versa. From there we expanded to other countries.
+            </p>
+          </div>
+        </div>
+        
+        {/* Contact Overlay - Show under content when zoomed out */}
+        {isZoomedOut && (
+          <div className="max-w-7xl mx-auto mt-8 lg:mt-12 px-4">
+            <div className="bg-[#ad343e] text-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg w-full max-w-[500px] mx-auto">
               <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Reach out to us</h3>
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2 sm:gap-3">
@@ -108,22 +174,7 @@ export default function About() {
               </div>
             </div>
           </div>
-
-          {/* Our Debut Content */}
-          <div>
-            <h1 className="text-heading mb-6">Our Debut</h1>
-            <p className="text-paragraph mb-6">
-              Our journey began when our founder, an African living in the UK, recognized a gap in the flow of quality
-              food products between producers and the growing markets in Africa and Europe. Driven by a vision to bridge
-              this gap, he seized the opportunity to build a trusted distribution network that connects continents,
-              supports businesses, and ensures access to diverse, high-quality food for all.
-            </p>
-            <p className="text-small">
-              We started with our founder country of origin, Cameroon. We bridge the gap between well-known products
-              from Europe to Cameroon and vice versa. From there we expanded to other countries.
-            </p>
-          </div>
-        </div>
+        )}
       </section>
 
       {/* Video Carousel Section */}

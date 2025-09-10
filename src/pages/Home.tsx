@@ -6,6 +6,7 @@ import { useState, useEffect } from "react"
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isZoomedOut, setIsZoomedOut] = useState(false)
   
   const slides = [
     "/Backgrounds/pexels-karoldach-317969.jpg",
@@ -28,6 +29,26 @@ export default function Home() {
 
     return () => clearInterval(timer)
   }, [slides.length, isPaused])
+
+  // Detect zoom level and screen size changes
+  useEffect(() => {
+    const checkZoomLevel = () => {
+      // More accurate zoom detection
+      const zoomLevel = Math.round((window.outerWidth / window.innerWidth) * 100) / 100
+      const isZoomed = zoomLevel >= 1.5 || window.innerWidth <= 1200 // 67% zoom or smaller screen
+      setIsZoomedOut(isZoomed)
+    }
+
+    // Check on mount and resize
+    checkZoomLevel()
+    window.addEventListener('resize', checkZoomLevel)
+    window.addEventListener('orientationchange', checkZoomLevel)
+    
+    return () => {
+      window.removeEventListener('resize', checkZoomLevel)
+      window.removeEventListener('orientationchange', checkZoomLevel)
+    }
+  }, [])
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -208,17 +229,64 @@ export default function Home() {
       <section className="py-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Product Image with Contact Overlay - Inseparable Group */}
+            {/* Product Image */}
             <div className="relative group">
-              {/* Product Image */}
               <img
                 src="/rico website/pexels-polina-tankilevitch-4187715.jpg"
                 alt="Premium Beverage Products"
                 className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] object-cover rounded-lg"
               />
               
-              {/* Contact Overlay - Positioned relative to the image */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
+              {/* Contact Overlay - Only show when NOT zoomed out */}
+              {!isZoomedOut && (
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Feel free to contact us</h3>
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#ad343e] text-xs">📞</span>
+                      </div>
+                      <span className="text-xs sm:text-sm">+44 7572 795578</span>
+                    </div>
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#ad343e] text-xs">✉</span>
+                      </div>
+                      <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                    </div>
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#ad343e] text-xs">📍</span>
+                      </div>
+                      <span className="text-xs sm:text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="text-center lg:text-left">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-[#2c2f24]">We provide well known products.</h2>
+              <p className="text-sm md:text-base mb-4 md:mb-6 text-gray-600">
+                Our story began with a vision to create a company that will promote well known products, which respect
+                environmental standards and are of affordable price ranges, because we want to contribute to
+                malnutrition around the world. In phase with that, we want to make African products, and other world
+                healthy products to be visible to the world through our robust distribution network.
+              </p>
+              <p className="text-sm mb-6 md:mb-8 text-gray-600">
+                We firmly believe that affordability and quality are words that can be used in the same sentence. That
+                is why we decided to be the bridge that connects both worlds.
+              </p>
+
+              <Button className="bg-transparent border border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white mt-4 md:mt-6">
+                <Link to="/about">More About Us</Link>
+              </Button>
+            </div>
+          </div>
+          
+          {/* Contact Overlay - Show under content when zoomed out */}
+          {isZoomedOut && (
+            <div className="max-w-7xl mx-auto mt-8 lg:mt-12 px-4">
+              <div className="bg-[#ad343e] text-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg w-full max-w-[500px] mx-auto">
                 <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Feel free to contact us</h3>
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex items-center gap-2 sm:gap-3">
@@ -242,24 +310,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="text-center lg:text-left">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-[#2c2f24]">We provide well known products.</h2>
-              <p className="text-sm md:text-base mb-4 md:mb-6 text-gray-600">
-                Our story began with a vision to create a company that will promote well known products, which respect
-                environmental standards and are of affordable price ranges, because we want to contribute to
-                malnutrition around the world. In phase with that, we want to make African products, and other world
-                healthy products to be visible to the world through our robust distribution network.
-              </p>
-              <p className="text-sm mb-6 md:mb-8 text-gray-600">
-                We firmly believe that affordability and quality are words that can be used in the same sentence. That
-                is why we decided to be the bridge that connects both worlds.
-              </p>
-
-              <Button className="bg-transparent border border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white mt-4 md:mt-6">
-                <Link to="/about">More About Us</Link>
-              </Button>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
