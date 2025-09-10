@@ -370,7 +370,7 @@ export default function Home() {
 
             <div className="text-center">
               <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/Zo/new/chef's heitz logo.jpg" alt="Kuhne + Heitz" className="w-full h-full object-contain" />
+                <img src="/rico website/Kuhne.png" alt="Kuhne + Heitz" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Kuhne + Heitz</h3>
               <p className="text-sm text-gray-600">

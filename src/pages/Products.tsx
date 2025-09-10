@@ -67,8 +67,8 @@ export default function Products() {
       { id: "mega-whale-4", brand: "Mega Whale", product: "Biscuits", image: "/Zo/new/FOlder/mega%20whale%20biscuit%203.jpg", category: "Dry Products" },
 
       // English Cheese Products
-      { id: "english-cheese-1", brand: "English Cheese", product: "Cheese", image: "/Zo/new/FOlder/the%20english%20cheese%201.png", category: "Dry Products" },
-      { id: "english-cheese-2", brand: "English Cheese", product: "Cheese", image: "/Zo/new/FOlder/the%20english%20cheese%202.jpg", category: "Dry Products" },
+      { id: "english-cheese-1", brand: "English Cheese", product: "Cheese", image: "/Zo/new/FOlder/the%20english%20cheese%201.png", category: "Dairy" },
+      { id: "english-cheese-2", brand: "English Cheese", product: "Cheese", image: "/Zo/new/FOlder/the%20english%20cheese%202.jpg", category: "Dairy" },
 
       // Garusana Additional Products
       { id: "garusana-new-1", brand: "Garusana", product: "Food Products", image: "/Zo/new/FOlder/Garusana%20product%201.webp", category: "Dry Products" },
