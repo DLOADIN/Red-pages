@@ -81,26 +81,26 @@ export default function About() {
             </div>
 
             {/* Contact Overlay */}
-            <div className="absolute top-[28vw] left-[40vh] transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[400px]">
-              <h3 className="text-xl font-semibold mb-6 text-center">Reach out to us</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Reach out to us</h3>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-[#ad343e] text-xs">📞</span>
                   </div>
-                  <span className="text-sm">+44 7572 762578</span>
+                  <span className="text-xs sm:text-sm">+44 7572 762578</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-[#ad343e] text-xs">✉</span>
                   </div>
-                  <span className="text-sm">roman@rico-distribution-international.co.uk</span>
+                  <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-[#ad343e] text-xs">📍</span>
                   </div>
-                  <span className="text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                  <span className="text-xs sm:text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
                 </div>
               </div>
             </div>
