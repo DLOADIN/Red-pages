@@ -79,7 +79,7 @@ export default function About() {
             <div className="grid grid-cols-2 gap-6">
               <img src="/rico website/Pictures/countre vanilla.png" alt="Countre Banana" className="w-full h-64 rounded-xl object-contain" />
               <img src="/rico website/Pictures/gullon 3.png" alt="Countre Chocolate" className="w-full h-64 rounded-xl object-contain" />
-              <img src="/rico website/Pictures/countre 5 with milk.png" alt="Countre Vanilla" className="w-full h-64 rounded-xl object-contain" />
+              <img src="/Zo/new/FOlder/Garusana product 1.webp" alt="Countre Vanilla" className="w-full h-64 rounded-xl object-contain" />
               <img
                 src="/rico website/Pictures/countre 1.png"
                 alt="Countre Strawberry"
