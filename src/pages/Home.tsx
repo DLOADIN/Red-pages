@@ -212,15 +212,17 @@ export default function Home() {
               <img
                 src="/rico website/KUbern/drink_countre_1750309200_3658181260225115257_73638498330.jpg"
                 alt="Premium Beverage Products"
-                className="w-full max-w-[400px] md:max-w-[500px] h-auto md:h-[650px] object-cover rounded-lg relative z-10"
+                className="w-[80vh] md:max-w-[100vh] h-[65vh] object-cover rounded-lg relative z-10"
               />
-              <div className="absolute -bottom-4 md:-bottom-6 left-5 bg-[#ad343e] p-4 md:p-6 rounded-lg text-white z-20 shadow-lg max-w-[280px] md:max-w-none">
+              <div className="pt-[80vh]">
+              <div className="absolute -bottom-4 md:-bottom-6 left-36  bg-[#ad343e] p-4 md:p-6 rounded-lg text-white z-20 shadow-lg max-w-[280px] md:max-w-none">
                 <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Feel free to contact us</h3>
                 <div className="space-y-1 md:space-y-2 text-xs md:text-sm">
                   <p>📞 +44 7572 795578</p>
                   <p>✉️ roman@rico-distribution-international.co.uk</p>
                   <p>📍 Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</p>
                 </div>
+              </div>
               </div>
             </div>
             <div className="text-center lg:text-left">
