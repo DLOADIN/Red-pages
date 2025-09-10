@@ -76,12 +76,12 @@ export default function About() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Product Image */}
           <div className="relative">
-            <div className="relative">
-              <img src="/rico website/KUbern/drink_countre_1748928836_3646601843342136806_73638498330.jpg" alt="Countre Drink" className="w-full h-full rounded-xl object-cover" />
+            <div className="relative rounded-xl">
+              <img src="/rico website/KUbern/drink_countre_1748928836_3646601843342136806_73638498330.jpg" alt="Countre Drink" className="w-full h-full rounded-2xl object-cover" />
             </div>
 
             {/* Contact Overlay */}
-            <div className="absolute top-3/2 left-3/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[300px]">
+            <div className="absolute top-3/6 left-[75vh] transform -translate-x-1/2 -translate-y-1/2 bg-[#ad343e] text-white p-8 rounded-lg shadow-lg min-w-[300px]">
               <h3 className="text-xl font-semibold mb-6 text-center">Reach out to us</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
