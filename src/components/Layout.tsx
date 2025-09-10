@@ -297,7 +297,7 @@ export default function Layout({ children }: LayoutProps) {
                 <img src="/rico website/KUbern/drink_countre_1744645326_3610669151937646040_73638498330.jpg" alt="Chocolate Milk Drink" className="rounded w-full h-42 object-cover" />
                 <img src="/rico website/KUbern/drink_countre_1748928836_3646601843342136806_73638498330.jpg" alt="Banana Milk Drink" className="rounded w-full h-42 object-cover" />
                 <img src="/Zo/Pictures/countre choco.png" alt="Strawberry Milk Drink" className="rounded w-full h-[24vh] object-cover" />
-                <img src="/rico website/countre-vanilla-bottle.png" alt="Vanilla Milk Drink" className="rounded w-full h-42 object-cover" />
+                <img src="/rico website/Pictures/countre 1.png" alt="Vanilla Milk Drink" className="rounded w-full h-[24vh] object-cover" />
               </div>
             </div>
           </div>
