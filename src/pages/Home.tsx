@@ -238,33 +238,31 @@ export default function Home() {
               <img
                 src="/rico website/pexels-polina-tankilevitch-4187715.jpg"
                 alt="Premium Beverage Products"
-                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[600px] object-cover rounded-lg"
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[560px] object-cover rounded-lg"
               />
 
               {/* Contact Overlay - Only show when NOT zoomed out */}
               {!isZoomedOut && (
-                <div className="absolute bottom-8 left-8 bg-[#ad343e] text-white p-6 rounded-lg shadow-lg w-[320px] max-w-[85%]">
-                  <h3 className="text-xl font-semibold mb-6 text-center">Feel free to contact us</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="absolute bottom-6 left-80 bg-[#ad343e] text-white p-5 rounded-lg shadow-lg w-[280px] max-w-[80%]">
+                  <h3 className="text-lg font-semibold mb-4 text-center">Feel free to contact us</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-[#ad343e] text-xs">📞</span>
                       </div>
-                      <span className="text-sm">+44 7572 795578</span>
+                      <span className="text-xs">+44 7572 795578</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-[#ad343e] text-xs">✉</span>
                       </div>
-                      <span className="text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                      <span className="text-xs break-all">roman@rico-distribution-international.co.uk</span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-[#ad343e] text-xs">📍</span>
                       </div>
-                      <span className="text-sm">
-                        Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom
-                      </span>
+                      <span className="text-xs">79 Kingsley Close, Reading, RG2 8TX, United Kingdom</span>
                     </div>
                   </div>
                 </div>
@@ -295,7 +293,7 @@ export default function Home() {
           {isZoomedOut && (
             <div className="max-w-7xl mx-auto mt-8 lg:mt-12 px-4">
               <div className="bg-[#ad343e] text-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg w-full max-w-[500px] mx-auto">
-                <h3 className="text-xl font-semibold mb-6 text-center">Feel free to contact us</h3>
+                <h3 className="text-lg font-semibold mb-4 text-center">Feel free to contact us</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
@@ -313,7 +311,7 @@ export default function Home() {
                     <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ad343e] text-xs">📍</span>
                     </div>
-                    <span className="text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                    <span className="text-sm">79 Kingsley Close, Reading, RG2 8TX, United Kingdom</span>
                   </div>
                 </div>
               </div>

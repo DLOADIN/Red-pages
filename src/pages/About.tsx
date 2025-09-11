@@ -107,7 +107,7 @@ export default function About() {
 
             {/* Contact Overlay - Only show when NOT zoomed out */}
             {!isZoomedOut && (
-              <div className="absolute bottom-8 left-8 bg-[#ad343e] text-white p-6 rounded-lg shadow-lg w-[320px] max-w-[85%]">
+              <div className="absolute bottom-0 left-[15vh] bg-[#ad343e] text-white p-6 rounded-lg shadow-lg w-[320px] max-w-[85%]">
                 <h3 className="text-xl font-semibold mb-6 text-center">Reach out to us</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
