@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "../components/ui/button"
 import { Milk, Coffee, Package, Fish, ChevronLeft, ChevronRight } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -7,22 +9,22 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const [isZoomedOut, setIsZoomedOut] = useState(false)
-  
+
   const slides = [
     "/Backgrounds/pexels-karoldach-317969.jpg",
-    "/Backgrounds/pexels-kindelmedia-8352353.jpg", 
+    "/Backgrounds/pexels-kindelmedia-8352353.jpg",
     "/Backgrounds/pexels-mareefe-1022385.jpg",
     "/Backgrounds/pexels-nastyasensei-66707-821365.jpg",
     "/Backgrounds/pexels-pixabay-236010.jpg",
     "/Backgrounds/pexels-pixabay-266706.jpg",
     "/Backgrounds/pexels-suzyhazelwood-1325467.jpg",
-    "/Backgrounds/pexels-pixabay-65882.jpg"
+    "/Backgrounds/pexels-pixabay-65882.jpg",
   ]
 
   // Auto-play slideshow with pause on hover
   useEffect(() => {
     if (isPaused) return
-    
+
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
     }, 2000) // Change slide every 2 seconds
@@ -41,12 +43,12 @@ export default function Home() {
 
     // Check on mount and resize
     checkZoomLevel()
-    window.addEventListener('resize', checkZoomLevel)
-    window.addEventListener('orientationchange', checkZoomLevel)
-    
+    window.addEventListener("resize", checkZoomLevel)
+    window.addEventListener("orientationchange", checkZoomLevel)
+
     return () => {
-      window.removeEventListener('resize', checkZoomLevel)
-      window.removeEventListener('orientationchange', checkZoomLevel)
+      window.removeEventListener("resize", checkZoomLevel)
+      window.removeEventListener("orientationchange", checkZoomLevel)
     }
   }, [])
 
@@ -76,18 +78,18 @@ export default function Home() {
             <div
               key={index}
               className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ease-in-out ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
+                index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
               style={{
                 backgroundImage: `url('${slide}')`,
               }}
             />
           ))}
-          </div>
-        
+        </div>
+
         {/* Overlay with gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-black/60"></div>
-        
+
         {/* Navigation Arrows */}
         <button
           onClick={prevSlide}
@@ -96,7 +98,7 @@ export default function Home() {
         >
           <ChevronLeft size={24} />
         </button>
-        
+
         <button
           onClick={nextSlide}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
@@ -104,31 +106,31 @@ export default function Home() {
         >
           <ChevronRight size={24} />
         </button>
-        
+
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/30 shadow-2xl animate-fade-in">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white drop-shadow-lg">
               Welcome to Rico Distribution
-          </h1>
+            </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/95 max-w-3xl leading-relaxed">
-              Your trusted partner for premium food and beverage distribution worldwide. 
-              Connecting quality products with global markets.
+              Your trusted partner for premium food and beverage distribution worldwide. Connecting quality products
+              with global markets.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
               <Button className="bg-[#ad343e] hover:bg-red-600 text-white px-8 md:px-12 py-4 md:py-5 rounded-full text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                 <Link to="/products">Explore Products</Link>
               </Button>
-            <Button
-              variant="outline"
+              <Button
+                variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-[#ad343e] px-8 md:px-12 py-4 md:py-5 rounded-full bg-transparent text-base md:text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
-            >
+              >
                 <Link to="/about">Learn More</Link>
-            </Button>
+              </Button>
             </div>
           </div>
         </div>
-        
+
         {/* Slide Indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-3">
           {slides.map((_, index) => (
@@ -137,14 +139,14 @@ export default function Home() {
               onClick={() => goToSlide(index)}
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? 'bg-white scale-125 shadow-lg'
-                  : 'bg-white/50 hover:bg-white/75 hover:scale-110'
+                  ? "bg-white scale-125 shadow-lg"
+                  : "bg-white/50 hover:bg-white/75 hover:scale-110"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
-        
+
         {/* Pause Indicator */}
         {/* {isPaused && (
           <div className="absolute top-6 right-6 z-20 bg-black/40 backdrop-blur-md text-white px-3 py-2 rounded-full text-sm font-medium border border-white/20">
@@ -156,7 +158,9 @@ export default function Home() {
       {/* Browse Our Products Section */}
       <section className="py-8 md:py-16 bg-[#f9f9f7]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">Browse Our Products</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">
+            Browse Our Products
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm text-center">
               <div className="bg-gray-100 rounded-lg p-4 md:p-6 mb-4">
@@ -234,38 +238,42 @@ export default function Home() {
               <img
                 src="/rico website/pexels-polina-tankilevitch-4187715.jpg"
                 alt="Premium Beverage Products"
-                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] object-cover rounded-lg"
+                className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[600px] object-cover rounded-lg"
               />
-              
+
               {/* Contact Overlay - Only show when NOT zoomed out */}
               {!isZoomedOut && (
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[10vw] sm:mt-[10vw] md:mt-[10vw] lg:mt-[22vw] xl:mt-[20vw] bg-[#ad343e] text-white p-3 sm:p-4 md:p-6 lg:p-8 rounded-lg shadow-lg w-[85%] sm:w-[75%] md:w-[350px] lg:w-[400px] xl:w-[400px] 2xl:w-[500px]">
-                  <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Feel free to contact us</h3>
-                  <div className="space-y-3 sm:space-y-4">
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="absolute bottom-8 left-8 bg-[#ad343e] text-white p-6 rounded-lg shadow-lg w-[320px] max-w-[85%]">
+                  <h3 className="text-xl font-semibold mb-6 text-center">Feel free to contact us</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-[#ad343e] text-xs">📞</span>
                       </div>
-                      <span className="text-xs sm:text-sm">+44 7572 795578</span>
+                      <span className="text-sm">+44 7572 795578</span>
                     </div>
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-[#ad343e] text-xs">✉</span>
                       </div>
-                      <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                      <span className="text-sm break-all">roman@rico-distribution-international.co.uk</span>
                     </div>
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="flex items-center gap-3">
+                      <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                         <span className="text-[#ad343e] text-xs">📍</span>
                       </div>
-                      <span className="text-xs sm:text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                      <span className="text-sm">
+                        Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom
+                      </span>
                     </div>
                   </div>
                 </div>
               )}
             </div>
             <div className="text-center lg:text-left">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-[#2c2f24]">We provide well known products.</h2>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 text-[#2c2f24]">
+                We provide well known products.
+              </h2>
               <p className="text-sm md:text-base mb-4 md:mb-6 text-gray-600">
                 Our story began with a vision to create a company that will promote well known products, which respect
                 environmental standards and are of affordable price ranges, because we want to contribute to
@@ -282,30 +290,30 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          
+
           {/* Contact Overlay - Show under content when zoomed out */}
           {isZoomedOut && (
             <div className="max-w-7xl mx-auto mt-8 lg:mt-12 px-4">
               <div className="bg-[#ad343e] text-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg w-full max-w-[500px] mx-auto">
-                <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-center">Feel free to contact us</h3>
-                <div className="space-y-3 sm:space-y-4">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                <h3 className="text-xl font-semibold mb-6 text-center">Feel free to contact us</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ad343e] text-xs">📞</span>
                     </div>
-                    <span className="text-xs sm:text-sm">+44 7572 795578</span>
+                    <span className="text-sm">+44 7572 795578</span>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ad343e] text-xs">✉</span>
                     </div>
-                    <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                    <span className="text-sm break-all">roman@rico-distribution-international.co.uk</span>
                   </div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ad343e] text-xs">📍</span>
                     </div>
-                    <span className="text-xs sm:text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
+                    <span className="text-sm">Regus House, 400 Thames valley park RG6 1PT Reading United Kingdom</span>
                   </div>
                 </div>
               </div>
@@ -317,12 +325,15 @@ export default function Home() {
       {/* Our Brands Section */}
       <section className="py-8 md:py-16 bg-[#f9f9f7]">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">Our brands</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">
+            Our brands
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            
-
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/rico website/logo/Countre-logo.jpg" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Countre</h3>
@@ -333,38 +344,46 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/Zo/new/MainImage.png" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Haribo</h3>
               <p className="text-sm text-gray-600">
-                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
-                moment.
+                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and
+                taste to refresh and nourish every moment.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/Zo/new/download.png" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Patterson Short Bread</h3>
               <p className="text-sm text-gray-600">
-                John & Isabella Paterson founded their bakery in the Royal Burgh of Rutherglen, Scotland, where they sold their home baked goods from a horse-drawn van.
+                John & Isabella Paterson founded their bakery in the Royal Burgh of Rutherglen, Scotland, where they
+                sold their home baked goods from a horse-drawn van.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/Zo/new/hills biscuit logo.jpg" alt="Countre" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Hill Biscuits</h3>
               <p className="text-sm text-gray-600">
-                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and taste to refresh and nourish every
-                moment.
+                Hill Biscuits offers delicious flavored biscuits made by the best ingredients, blending quality and
+                taste to refresh and nourish every moment.
               </p>
             </div>
-
-
           </div>
 
           <div className="text-center mt-6 md:mt-8">
@@ -381,11 +400,20 @@ export default function Home() {
       {/* Our Partners Section */}
       <section className="py-8 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">Our Partners</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-[#2c2f24]">
+            Our Partners
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/rico website/logo/carrefour logo.png" alt="Carrefour Cameroun" className="w-full h-full object-contain" />
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
+                <img
+                  src="/rico website/logo/carrefour logo.png"
+                  alt="Carrefour Cameroun"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Carrefour Cameroun</h3>
               <p className="text-sm text-gray-600">
@@ -395,8 +423,15 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
-                <img src="/rico website/logo/bao.png" alt="BAO Cash and Carry" className="w-full h-full object-contain" />
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
+                <img
+                  src="/rico website/logo/bao.png"
+                  alt="BAO Cash and Carry"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">BAO Cash and Carry</h3>
               <p className="text-sm text-gray-600">
@@ -406,7 +441,10 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/rico website/logo/santa.jpg" alt="Santa Lucia" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Santa Lucia</h3>
@@ -417,7 +455,10 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/rico website/logo/dovv.jpg" alt="Dovv" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Dovv</h3>
@@ -428,34 +469,44 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/Zo/new/cretors logo.webp" alt="Cretors" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Cretors</h3>
               <p className="text-sm text-gray-600">
-                Cretors is a leading manufacturer of popcorn and snack food equipment, known for their innovative
-                and reliable commercial food processing solutions.
+                Cretors is a leading manufacturer of popcorn and snack food equipment, known for their innovative and
+                reliable commercial food processing solutions.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/rico website/Kuhne.png" alt="Kuhne + Heitz" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Kuhne + Heitz</h3>
               <p className="text-sm text-gray-600">
-                Kuhne + Heitz is a premium food distribution company specializing in high-quality European
-                products and gourmet food items for discerning customers.
+                Kuhne + Heitz is a premium food distribution company specializing in high-quality European products and
+                gourmet food items for discerning customers.
               </p>
             </div>
 
             <div className="text-center">
-              <div className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto" style={{borderRadius: '12px', width: '100%', maxWidth: '306px', height: '280px', minHeight: '280px'}}>
+              <div
+                className="bg-white p-4 md:p-6 shadow-sm mb-4 border mx-auto"
+                style={{ borderRadius: "12px", width: "100%", maxWidth: "306px", height: "280px", minHeight: "280px" }}
+              >
                 <img src="/Zo/new/geko logo heitz.jpg" alt="Kuhne + Heitz" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold text-[#2c2f24] mb-2">Geko</h3>
               <p className="text-sm text-gray-600">
-                Geko offers fast and friendly service with affordable prices and stock a range of tried and tested quality diets for your fruit eating geckos.
+                Geko offers fast and friendly service with affordable prices and stock a range of tried and tested
+                quality diets for your fruit eating geckos.
               </p>
             </div>
           </div>
@@ -474,11 +525,11 @@ export default function Home() {
       {/* World Map Section */}
       <section className="py-8 md:py-16 bg-[#f9f9f7]">
         <div className="w-full">
-            <img
+          <img
             src="/rico website/Pictures/world red map isolated on beige background_ Detailed world atlas.jpg"
-              alt="Global Distribution Map"
+            alt="Global Distribution Map"
             className="w-full h-auto"
-            />
+          />
         </div>
       </section>
     </div>
