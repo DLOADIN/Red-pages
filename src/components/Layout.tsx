@@ -36,10 +36,10 @@ export default function Layout({ children }: LayoutProps) {
             <div className="flex items-center gap-2">
               <Mail size={14} />
               <a 
-                href="mailto:roman@rico-distribution-international.co.uk"
+                href="mailto:romaric@rico-distribution-international.co.uk"
                 className="hover:text-gray-300 transition-colors cursor-pointer"
               >
-                roman@rico-distribution-international.co.uk
+                romaric@rico-distribution-international.co.uk
               </a>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function Layout({ children }: LayoutProps) {
           <Button
             variant="outline"
             className="border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
-              onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=roman@rico-distribution-international.co.uk', '_blank')}
+              onClick={() => window.open('https://mail.google.com/mail/?view=cm&fs=1&to=romaric@rico-distribution-international.co.uk', '_blank')}
           >
             Mail
           </Button>
@@ -189,7 +189,7 @@ export default function Layout({ children }: LayoutProps) {
                   variant="outline"
                   className="w-full border-[#474747] text-[#474747] hover:bg-[#474747] hover:text-white bg-transparent"
                   onClick={() => {
-                    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=roman@rico-distribution-international.co.uk', '_blank')
+                    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=romaric@rico-distribution-international.co.uk', '_blank')
                     setIsMobileMenuOpen(false)
                   }}
                 >

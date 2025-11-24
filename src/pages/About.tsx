@@ -120,7 +120,7 @@ export default function About() {
                     <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-[#ad343e] text-xs">✉</span>
                     </div>
-                    <span className="text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                    <span className="text-sm break-all">romaric@rico-distribution-international.co.uk</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
@@ -165,7 +165,7 @@ export default function About() {
                   <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-[#ad343e] text-xs">✉</span>
                   </div>
-                  <span className="text-xs sm:text-sm break-all">roman@rico-distribution-international.co.uk</span>
+                  <span className="text-xs sm:text-sm break-all">romaric@rico-distribution-international.co.uk</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full flex items-center justify-center flex-shrink-0">
